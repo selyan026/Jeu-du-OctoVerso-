@@ -1,0 +1,45 @@
+//
+// Created by selyan on 26/12/2024.
+//
+
+
+
+#ifndef JOUEUR_H
+#define JOUEUR_H
+
+#include "pioche.h"
+
+
+enum{J1=0,J2=1};
+
+/* *
+* Représente un joueur (i.e son identifiant, sa main, le nombre de chevalet qu'il lui reste).
+*/
+typedef struct{
+    int idJoueur;
+    char main[CARTEJOUEUR];
+    int tailleMain;
+}Joueur;
+
+/**
+ * @brief Rempli la main d'un joueur .
+ * @param[in] joueur Adresse du joueur dont le deck va être remplis.
+ * @param[in] p Adresse de la pioche qui va être retirée les cartes.
+ * @param[in] id L'id du joueur auquel on va remplir sa main.
+ * @sa Fonction char pioche
+ */
+void remplirJoueur(Joueur* joueur,Pioche* p,int id);
+
+/**
+ * @brief Permet d'afficher un joueur avec sa main et son id  .
+ * @param[in] joueur Adresse du joueur dont les informations vont être affichés .
+ * @sa Stucture Joueur
+ */
+void afficherJoueur(const Joueur* joueur);
+
+
+
+
+
+
+#endif //JOUEUR_H
