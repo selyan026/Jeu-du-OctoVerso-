@@ -8,6 +8,7 @@
 #define JOUEUR_H
 
 #include "pioche.h"
+#include "vecteur.h"
 
 
 enum{J1=0,J2=1};
@@ -17,12 +18,12 @@ enum{J1=0,J2=1};
 */
 typedef struct{
     int idJoueur;
-    char main[CARTEJOUEUR];
+    Vecteur main;
     int tailleMain;
 }Joueur;
 
 /**
- * @brief Rempli la main d'un joueur .
+ * @brief Rempli la main d'un joueur.
  * @param[in] joueur Adresse du joueur dont le deck va être remplis.
  * @param[in] p Adresse de la pioche qui va être retirée les cartes.
  * @param[in] id L'id du joueur auquel on va remplir sa main.
@@ -38,7 +39,7 @@ void remplirJoueur(Joueur* joueur,Pioche* p,int id);
 void afficherJoueur(const Joueur* joueur);
 
 
-
+void trierMain(Joueur* j);
 
 
 

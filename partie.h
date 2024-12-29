@@ -8,12 +8,13 @@
 #include "vecteur.h"
 #include "pioche.h"
 #include "joueur.h"
+#include "rail.h"
 
 
 
 typedef struct{
     Joueur joueur[NBJOUEURS];
-    Vecteur* rail;
+    Rail rail;
     Pioche pioche;
 }Partie;
 

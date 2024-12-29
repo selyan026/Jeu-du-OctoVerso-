@@ -11,7 +11,9 @@ void initJoueurs(Partie* p,Pioche* v) {
 void initialiserPartie(Partie* p){
     initPioche(&p->pioche);
     initJoueurs(p,&p->pioche);
+    p->rail.tailleRail=0;
 }
+
 
 
 

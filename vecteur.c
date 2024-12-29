@@ -1,66 +1,34 @@
-#include <assert.h>
-#include <stdlib.h>
 #include "vecteur.h"
+#include <string.h>
+#include <stdlib.h>
 
-int initVecteur(Vecteur* v, int capacite) {
-    assert(capacite > 0);
-    v->capacite = capacite;
-    v->nbElements = 0;
-    v->elements = (ItemV*)malloc(sizeof(ItemV) * capacite);
-    return v->elements != NULL;
+void vecteurInitialiser(Vecteur* v, size_t capaciteInitiale) {
+    v->donnees = malloc(capaciteInitiale * sizeof(char));
+    v->taille = 0;
+    v->capacite = capaciteInitiale;
 }
 
-int taille(const Vecteur* v) {
-    return v->nbElements;
-}
-
-int ajouter(Vecteur* v, ItemV it) {
-    const int FACTEUR = 2;
-    if (v->nbElements == v->capacite) {
-        ItemV* tab = (ItemV*)realloc(v->elements, sizeof(ItemV) * v->capacite * FACTEUR);
-        if (tab == NULL)
-            return 0;
-        v->capacite *= FACTEUR;
-        v->elements = tab;
+void vecteurAjouterFin(Vecteur* v, char element) {
+    if (v->taille == v->capacite) {
+        v->capacite *= 2;
+        v->donnees = realloc(v->donnees, v->capacite * sizeof(char));
     }
-    v->elements[v->nbElements++] = it;
-    return 1;
+    v->donnees[v->taille++] = element;
 }
 
-ItemV obtenir(const Vecteur* v, int i) {
-    assert(i >= 0 && i < v->nbElements);
-    return v->elements[i];
+char vecteurSupprimerA(Vecteur* v, size_t index) {
+    char supprime = v->donnees[index];
+    memmove(&v->donnees[index], &v->donnees[index + 1], (v->taille - index - 1) * sizeof(char));
+    v->taille--;
+    return supprime;
 }
 
-void modifier(Vecteur* v, int i, ItemV it) {
-    assert(i >= 0 && i < v->nbElements);
-    v->elements[i] = it;
+void vecteurInsererA(Vecteur* v, size_t index, char element) {
+    if (v->taille == v->capacite) {
+        v->capacite *= 2;
+        v->donnees = realloc(v->donnees, v->capacite * sizeof(char));
+    }
+    memmove(&v->donnees[index + 1], &v->donnees[index], (v->taille - index) * sizeof(char));
+    v->donnees[index] = element;
+    v->taille++;
 }
-
-void supprimer(Vecteur* v, int i) {
-    assert(i >= 0 && i < v->nbElements);
-    for (++i; i < v->nbElements; ++i)
-        v->elements[i - 1] = v->elements[i];
-    --v->nbElements;
-}
-
-int retailler(Vecteur* v, int taille) {
-    assert(taille > 0);
-    ItemV* tab = (ItemV*)realloc(v->elements, sizeof(ItemV) * taille);
-    if (tab == NULL)
-        return 0;
-    v->elements = tab;
-    v->capacite = taille;
-    if (v->nbElements > taille)
-        v->nbElements = taille;
-    return 1;
-}
-
-void detruireVecteur(Vecteur* v) {
-    free(v->elements);
-}
-
-
-//
-// Created by selyan on 26/12/2024.
-//

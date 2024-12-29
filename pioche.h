@@ -27,13 +27,7 @@ void remplirChevalet(Pioche* p);
  */
 void melangerPioche(Pioche* p);
 
-/**
- * @brief Vérifie si la pioche est vide.
- *
- * @param[in] pioche Adresse de la Pioche à vérifier.
- * @return Retourne 1 si la pioche est vide, 0 sinon.
- */
-int estVide(const Pioche* pioche);
+
 
 
 /**
