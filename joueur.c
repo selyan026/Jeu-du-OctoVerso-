@@ -5,9 +5,9 @@
 
 
 void remplirJoueur(Joueur* joueur,Pioche* p, const int id) {
-    vecteurInitialiser(&joueur->main,CARTEJOUEUR);
+    vecteurInitialiser(&joueur->main,LETTREJOUEUR);
     joueur->idJoueur=id;
-    for (int i = 0; i < CARTEJOUEUR; i++) {
+    for (int i = 0; i < LETTREJOUEUR; i++) {
         vecteurAjouterFin(&joueur->main,piocher(p));
         ++joueur->tailleMain;
     }
@@ -16,7 +16,7 @@ void remplirJoueur(Joueur* joueur,Pioche* p, const int id) {
 
 void afficherJoueur(const Joueur* joueur) {
     printf("%d : ",joueur->idJoueur+1);
-    for (int i = 0; i < CARTEJOUEUR; i++) {
+    for (int i = 0; i < LETTREJOUEUR; i++) {
         printf("%c",joueur->main.donnees[i]);
     }
     printf("\n");

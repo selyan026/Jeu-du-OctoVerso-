@@ -38,7 +38,11 @@ void remplirJoueur(Joueur* joueur,Pioche* p,int id);
  */
 void afficherJoueur(const Joueur* joueur);
 
-
+/**
+ * @brief Permet de trier dans l'ordre alphabetique la main d'un joueur .
+ * @param[in] j Adresse du joueur dont la main doit etre trié .
+ * @sa Stucture Joueur
+ */
 void trierMain(Joueur* j);
 
 

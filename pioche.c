@@ -22,8 +22,6 @@ void remplirChevalet(Pioche* p) {
 }
 
 void melangerPioche(Pioche* p) {
-    if (estVide(p)) return; // Pas de mélange si la pioche est vide
-
     static int seeded = 0;
     if (!seeded) {
         srand((unsigned int)time(NULL));
@@ -38,25 +36,12 @@ void melangerPioche(Pioche* p) {
     }
 }
 
-
-
 char piocher(Pioche* pioche) {
-    if (!estVide(pioche)) {
         return pioche->chevalet[--pioche->nbPioche];
-    }
-    return '\0'; // Pioche vide
-}
-
-int estVide(const Pioche* pioche) {
-    return (pioche->nbPioche == 0);
 }
 
 void initPioche(Pioche* p) {
-    if (estVide(p)) {
-        remplirChevalet(p);
-    }
+    remplirChevalet(p);
     melangerPioche(p);
 }
-//
-// Created by selyan on 26/12/2024.
-//
+
