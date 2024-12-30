@@ -39,8 +39,7 @@ void melangerPioche(Pioche* p) {
 }
 
 char piocher(Pioche* pioche) {
-    --pioche->nbPioche;
-    return vecteurSupprimerA(&pioche->chevalet,pioche->nbPioche);
+    return vecteurSupprimerFin(&pioche->chevalet);
 }
 
 void initPioche(Pioche* p) {
