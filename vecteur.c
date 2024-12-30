@@ -34,11 +34,7 @@ void vecteurInsererA(Vecteur* v, size_t index, char element) {
     v->taille++;
 }
 char vecteurSupprimerFin(Vecteur* v) {
-
-    char supprime = v->donnees[v->taille - 1];
-    v->taille--;
-    v->donnees = realloc(v->donnees, --v->capacite * sizeof(char)); // Ajuster la mémoire si nécessaire
-    return supprime;
+    return v->donnees[--v->taille];
 }
 
 void vecteurLiberer(Vecteur* v) {
