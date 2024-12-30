@@ -1,6 +1,7 @@
 #ifndef PIOCHE_H
 #define PIOCHE_H
 
+#include "vecteur.h"
 
 enum{LETTREJOUEUR=12, // Nombre de chevalets contenu par un joueurs au début de la partie
     LETTREPIOCHE=64, // Nombre de chevalets contenu par la pioche au début de la partie
@@ -11,7 +12,7 @@ enum{LETTREJOUEUR=12, // Nombre de chevalets contenu par un joueurs au début de
 * Représente une pioche (i.e les chevalets qui la compose ainsi que leur nombre).
 */
 typedef struct{
-    char chevalet[LETTRETOTAL];
+    Vecteur chevalet;
     int nbPioche;
 }Pioche;
 

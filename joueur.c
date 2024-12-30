@@ -6,6 +6,7 @@
 
 void remplirJoueur(Joueur* joueur,Pioche* p, const int id) {
     vecteurInitialiser(&joueur->main,LETTREJOUEUR);
+    joueur->tailleMain=0;
     joueur->idJoueur=id;
     for (int i = 0; i < LETTREJOUEUR; i++) {
         vecteurAjouterFin(&joueur->main,piocher(p));
