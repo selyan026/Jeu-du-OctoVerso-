@@ -27,13 +27,23 @@ void remplirChevalet(Pioche* p);
  */
 void melangerPioche(Pioche* p);
 
-
+/**
+ * @brief Vérifie si la pioche est vide.
+ *
+ * @param[in] pioche Adresse de la Pioche à vérifier.
+ * @return Retourne 1 si la pioche est vide, 0 sinon.
+ */
+int estVide(const Pioche* pioche);
 
 
 /**
- * @brief Permet de piocher un chevalet de la pioche et décrémenté le taille de la pioche.
- * @param[in] pioche Adresse de la Pioche dont on va prendre le chevalet.
- * @return Retourne le chevalet pioché ou 0 si la pioche est vide.
+ * @brief Permet de piocher une lettre de la pioche.
+ *
+ * Réduit la taille de la pioche de 1 après l'extraction. Si la pioche est vide,
+ * retourne un caractère nul (`'\0'`).
+ *
+ * @param[in] pioche Adresse de la Pioche dont on va extraire une lettre.
+ * @return Retourne la lettre piochée ou '\0' si la pioche est vide.
  */
 char piocher(Pioche* pioche);
 

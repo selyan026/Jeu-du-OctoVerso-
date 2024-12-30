@@ -1,7 +1,7 @@
 #include "pioche.h"
 #include <time.h>
 #include <stdlib.h>
-#include <stdio.h>
+
 
 
 
@@ -22,11 +22,14 @@ void remplirChevalet(Pioche* p) {
 }
 
 void melangerPioche(Pioche* p) {
+    if (estVide(p)) return; // Pas de mélange si la pioche est vide
+
     static int seeded = 0;
-    if (!seeded){
+    if (!seeded) {
         srand((unsigned int)time(NULL));
         seeded = 1;
     }
+
     for (int i = p->nbPioche - 1; i > 0; i--) {
         int j = rand() % (i + 1);
         char temp = p->chevalet[i];
@@ -38,12 +41,20 @@ void melangerPioche(Pioche* p) {
 
 
 char piocher(Pioche* pioche) {
-    return pioche->chevalet[--pioche->nbPioche];
+    if (!estVide(pioche)) {
+        return pioche->chevalet[--pioche->nbPioche];
+    }
+    return '\0'; // Pioche vide
 }
 
+int estVide(const Pioche* pioche) {
+    return (pioche->nbPioche == 0);
+}
 
 void initPioche(Pioche* p) {
-    remplirChevalet(p);
+    if (estVide(p)) {
+        remplirChevalet(p);
+    }
     melangerPioche(p);
 }
 //
