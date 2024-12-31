@@ -12,4 +12,8 @@ add_executable(S1_02 main.c
         partie.h
         pioche.h
         vecteur.h
+        Dictonnaire.c
+        Dictonnaire.h
+        rail.c
+        rail.h
 )

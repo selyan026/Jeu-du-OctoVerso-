@@ -4,6 +4,7 @@ void initialiserPartie(Partie* p){
     initPioche(&p->pioche);
     initJoueurs(p,&p->pioche);
     p->rail.tailleRail=0;
+    p->joueurActuelle=J1;
 }
 
 void initJoueurs(Partie* p,Pioche* v) {
@@ -14,11 +15,20 @@ void initJoueurs(Partie* p,Pioche* v) {
     }
 }
 
+void demanderMot(Partie* p,char mot[MAX_MOT]){
+    do{
+        printf("%d> ",p->joueurActuelle+1);
+        fflush(stdout);
+        scanf("%s",mot);
+    }while(!estDansDictionnaire(mot));
+}
+
+void joueurSuivant(Partie* p) {
+    ++p->joueurActuelle;
+    p->joueurActuelle%=2;
+}
 
 
 
 
 
-//
-// Created by selyan on 26/12/2024.
-//

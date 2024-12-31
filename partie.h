@@ -5,17 +5,20 @@
 #ifndef PARTIE_H
 #define PARTIE_H
 
-#include "vecteur.h"
+#include "Dictonnaire.h"
 #include "pioche.h"
 #include "joueur.h"
 #include "rail.h"
+#include <string.h>
+#include <stdio.h>
 
-
+enum {NBJOUEURS=2};// Nombre de joueurs qui jouent
 
 typedef struct{
     Joueur joueur[NBJOUEURS];
     Rail rail;
     Pioche pioche;
+    int joueurActuelle;
 }Partie;
 
 /**
@@ -31,7 +34,8 @@ void initJoueurs(Partie* p,Pioche* v);
  * @param[in] p Adresse de la partie devant etre initialisee.
  */
 void initialiserPartie(Partie* p);
-
+void demanderMot(Partie* p,char mot[MAX_MOT]);
+void joueurSuivant(Partie* p);
 
 
 

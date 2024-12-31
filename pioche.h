@@ -3,10 +3,10 @@
 
 #include "vecteur.h"
 
-enum{LETTREJOUEUR=12, // Nombre de chevalets contenu par un joueurs au début de la partie
-    LETTREPIOCHE=64, // Nombre de chevalets contenu par la pioche au début de la partie
-    LETTRETOTAL=88, // Nombre de chevalets dans le jeu au total
-    NBJOUEURS=2}; // Nombre de joueurs qui jouent
+enum {
+    LETTREJOUEUR=12, // Nombre de chevalets contenu par un joueurs au début de la partie
+    LETTRETOTAL=88// Nombre de chevalets dans le jeu au total
+    };
 
 /* *
 * Représente une pioche (i.e les chevalets qui la compose ainsi que leur nombre).

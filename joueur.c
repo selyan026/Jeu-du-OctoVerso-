@@ -1,8 +1,4 @@
 #include "joueur.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 
 void remplirJoueur(Joueur* joueur,Pioche* p, const int id) {
     vecteurInitialiser(&joueur->main,LETTREJOUEUR);
@@ -34,3 +30,4 @@ void trierMain(Joueur *joueur) {
         }
     }
 }
+

@@ -1,14 +1,11 @@
-//
-// Created by selyan on 26/12/2024.
-//
-
-
-
 #ifndef JOUEUR_H
 #define JOUEUR_H
 
 #include "pioche.h"
 #include "vecteur.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 enum{J1=0,J2=1};
