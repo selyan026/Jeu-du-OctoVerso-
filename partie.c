@@ -20,7 +20,7 @@ void demanderMot(Partie* p,char mot[MAX_MOT]){
         printf("%d> ",p->joueurActuelle+1);
         fflush(stdout);
         scanf("%s",mot);
-    }while(!estDansDictionnaire(mot));
+    }while(strlen(mot)!=MAX_MOT-1 || !estDansDictionnaire(mot));
 }
 
 void joueurSuivant(Partie* p) {
