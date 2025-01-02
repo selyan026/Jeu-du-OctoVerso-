@@ -43,3 +43,4 @@ void supprimerLettre (Joueur *joueur,const char *mot) {
     }
     trierMain(joueur);
 }
+

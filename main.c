@@ -8,5 +8,7 @@ int main(){
     demanderMot(&p,mot1);
     joueurSuivant(&p);
     demanderMot(&p,mot2);
+    initRail(&p,mot1,mot2);
+    afficherRail(&p.rail);
     return 0;
 }

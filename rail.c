@@ -25,3 +25,15 @@ int verifierMotDansMain(const Vecteur main, const char* mot) {
     return 1;
 }
 
+void afficherRail(Rail* rail) {
+    printf("r> ");
+    for (int i=0;i< rail->tailleRail;++i) {
+        printf("%c",rail->rail[i]);
+    }
+    printf("\n");
+    printf("v> ");
+    for (int i=rail->tailleRail-1;i>=0;--i) {
+        printf("%c",rail->rail[i]);
+    }
+    printf("\n");
+}
