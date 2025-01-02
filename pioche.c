@@ -31,7 +31,7 @@ void melangerPioche(Pioche* p) {
     }
 
     for (int i = p->nbPioche - 1; i > 0; i--) {
-        int j = rand() % (i + 1);
+        int j = rand()%(i + 1);
         char temp = p->chevalet.donnees[i];
         p->chevalet.donnees[i] = p->chevalet.donnees[j];
         p->chevalet.donnees[j] = temp;

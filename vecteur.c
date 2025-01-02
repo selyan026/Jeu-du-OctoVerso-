@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 void vecteurInitialiser(Vecteur* v, size_t capaciteInitiale) {
-    v->donnees = malloc(capaciteInitiale * sizeof(char));
+    v->donnees = (char*)malloc(capaciteInitiale * sizeof(char));
     v->taille = 0;
     v->capacite = capaciteInitiale;
 }
@@ -18,10 +18,9 @@ void vecteurAjouterFin(Vecteur* v, char element) {
 
 
 char vecteurSupprimerA(Vecteur* v, size_t index) {
-    char supprime = v->donnees[index];
-    memmove(&v->donnees[index], &v->donnees[index + 1], (v->taille - index - 1) * sizeof(char));
-    v->taille--;
-    return supprime;
+    for (++index; index < v->taille; ++index)
+        v->donnees[index - 1] = v->donnees[index];
+    --v->taille;
 }
 
 void vecteurInsererA(Vecteur* v, size_t index, char element) {
@@ -35,6 +34,17 @@ void vecteurInsererA(Vecteur* v, size_t index, char element) {
 }
 char vecteurSupprimerFin(Vecteur* v) {
     return v->donnees[--v->taille];
+}
+
+int retailler(Vecteur* v, int taille) {
+    char* tab = (char*)realloc(v->donnees, sizeof(char) * taille);
+    if (tab == NULL)
+        return 0;
+    v->donnees = tab;
+    v->capacite = taille;
+    if (v->taille > taille)
+        v->taille = taille;
+    return 1;
 }
 
 void vecteurLiberer(Vecteur* v) {
