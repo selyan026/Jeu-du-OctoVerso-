@@ -30,4 +30,3 @@ void trierMain(Joueur *joueur) {
         }
     }
 }
-

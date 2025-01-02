@@ -13,7 +13,7 @@ typedef struct{
   int tailleRail;
 }Rail;
 
-int avoirLettre(Vecteur main, const char mot[MAX_MOT]);
+int verifierMotDansMain(Vecteur main, const char* mot);
 
 
 #endif //RAIL_H

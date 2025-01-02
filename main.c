@@ -6,6 +6,7 @@ int main(){
     Partie p;
     initialiserPartie(&p);
     demanderMot(&p,mot1);
-    printf("ca marche");
+    joueurSuivant(&p);
+    demanderMot(&p,mot2);
     return 0;
 }
