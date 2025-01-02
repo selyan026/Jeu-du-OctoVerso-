@@ -42,6 +42,8 @@ void afficherJoueur(const Joueur* joueur);
  */
 void trierMain(Joueur* j);
 
+void supprimerLettre (Joueur *joueur,const char *mot);
+
 
 
 

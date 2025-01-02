@@ -13,7 +13,7 @@ void remplirJoueur(Joueur* joueur,Pioche* p, const int id) {
 
 void afficherJoueur(const Joueur* joueur) {
     printf("%d : ",joueur->idJoueur+1);
-    for (int i = 0; i < LETTREJOUEUR; i++) {
+    for (int i = 0; i < joueur->tailleMain; i++) {
         printf("%c",joueur->main.donnees[i]);
     }
     printf("\n");
@@ -29,4 +29,17 @@ void trierMain(Joueur *joueur) {
             }
         }
     }
+}
+
+void supprimerLettre (Joueur *joueur,const char *mot) {
+    for (int i = 0; mot[i]!= '\0'; i++) {
+        for (int j = 0; j<joueur->tailleMain; j++) {
+            if (joueur->main.donnees[j] == mot[i]) {
+                vecteurSupprimerA(&joueur->main,j);
+                joueur->tailleMain--;
+                break;
+            }
+        }
+    }
+    trierMain(joueur);
 }

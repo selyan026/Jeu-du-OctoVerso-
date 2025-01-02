@@ -18,12 +18,10 @@ int verifierMotDansMain(const Vecteur main, const char* mot) {
                 break;
             }
         }
-        // Si la lettre n'est pas trouvée dans la main, mot invalide
         if (lettreTrouvee==0) {
             return 0;
         }
     }
-    // Toutes les lettres du mot sont dans la main
     return 1;
 }
 
