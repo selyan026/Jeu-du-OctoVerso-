@@ -1,28 +1,18 @@
 #include "rail.h"
 
 
-int verifierMotDansMain(const Vecteur main, const char* mot) {
-    Vecteur copieMain;
-    vecteurInitialiser(&copieMain,main.taille);
-    copieMain.taille=main.taille;
-    for (int i=0; i < main.taille; i++) {
-        copieMain.donnees[i]=main.donnees[i];
+void initRail(Rail* r,const char* mot1,const char* mot2) {
+    r->tailleRail=0;
+    if (strcmp(mot1,mot2)<0) {
+        strcpy(r->rail, mot1);
+        strcat(r->rail, mot2);
+        r->tailleRail=strlen(r->rail);
     }
-    // Parcourir chaque lettre du mot
-    for (int i = 0; mot[i]!= '\0'; i++) {
-        int lettreTrouvee = 0;
-        for (int j = 0; j<copieMain.taille; j++) {
-            if (copieMain.donnees[j] == mot[i]) {
-                lettreTrouvee = 1;
-                copieMain.donnees[j] = ' '; // Remplace la lettre pour éviter les doublons
-                break;
-            }
-        }
-        if (lettreTrouvee==0) {
-            return 0;
-        }
+    if (strcmp(mot1,mot2)>0) {
+        strcpy(r->rail, mot2);
+        strcat(r->rail, mot1);
+        r->tailleRail=strlen(r->rail);
     }
-    return 1;
 }
 
 void afficherRail(Rail* rail) {

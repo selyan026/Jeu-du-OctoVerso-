@@ -13,7 +13,8 @@ typedef struct{
   int tailleRail;
 }Rail;
 
-int verifierMotDansMain(Vecteur main, const char* mot);
+
+void initRail(Rail* r,const char* mot1,const char* mot2);
 void afficherRail(Rail* rail);
 
 #endif //RAIL_H

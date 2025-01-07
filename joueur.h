@@ -41,6 +41,7 @@ void afficherJoueur(const Joueur* joueur);
  * @sa Stucture Joueur
  */
 void trierMain(Joueur* j);
+int verifierMotDansMain(Vecteur main, const char* mot);
 
 void supprimerLettre (Joueur *joueur,const char *mot);
 

@@ -37,8 +37,6 @@ void initialiserPartie(Partie* p);
 void demanderMot(Partie* p,char mot[MAX_MOT]);
 void joueurSuivant(Partie* p);
 
-void initRail(Partie* p,const char* mot1,const char* mot2);
-
 
 
 #endif //PARTIE_H
