@@ -8,6 +8,9 @@
 
 enum{TAILLE_RAIL=9};
 
+/* *
+* Représente un rail (i.e la chaine de caractère qui la compose, sa taille qui est fixe).
+*/
 typedef struct{
   char rail[TAILLE_RAIL];
   int tailleRail;
