@@ -16,4 +16,5 @@ add_executable(S1_02 main.c
         Dictonnaire.h
         rail.c
         rail.h
+        itemvecteur.h
 )

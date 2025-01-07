@@ -1,19 +1,24 @@
-#ifndef VECTEUR_H
-#define VECTEUR_H
+#ifndef VECTOR_H
+#define VECTOR_H
 
-#include <stddef.h>
+#include "itemvecteur.h"
+
+enum { FACTEUR = 2 };
 
 typedef struct {
-	char* donnees;
-	size_t taille;
-	size_t capacite;
+	int taille;
+	int capacite;
+	ItemV* donnees;
 } Vecteur;
 
-void vecteurInitialiser(Vecteur* v, size_t capaciteInitiale);
-void vecteurAjouterFin(Vecteur* v, char element);
+int initialiserVecteur(Vecteur* v, int capacite);
+int taille(const Vecteur* v);
+int ajouterAuVecteur(Vecteur* v, ItemV it);
+ItemV obtenir(const Vecteur* v, int i);
+void modifier(Vecteur* v, int i, ItemV it);
+void supprimerA(Vecteur* v, int i);
+int redimensionner(Vecteur* v, int taille);
+void libererVecteur(Vecteur* v);
 char vecteurSupprimerFin(Vecteur* v);
-void vecteurInsererA(Vecteur* v, size_t index, char element);
-void vecteurSupprimerA(Vecteur* v, size_t index);
-void vecteurLiberer(Vecteur* v);
-int retailler(Vecteur* v, int taille);
+
 #endif

@@ -12,7 +12,7 @@
 #include <string.h>
 #include <stdio.h>
 
-enum {NBJOUEURS=2};// Nombre de joueurs qui jouent
+enum {NBJOUEURS=2,MAX_MOT=5};// Nombre de joueurs qui jouent
 
 typedef struct{
     Joueur joueur[NBJOUEURS];

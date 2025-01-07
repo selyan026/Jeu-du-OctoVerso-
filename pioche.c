@@ -6,7 +6,7 @@
 
 
 void remplirChevalet(Pioche* p) {
-    vecteurInitialiser(&p->chevalet,LETTRETOTAL);
+    initialiserVecteur(&p->chevalet,LETTRETOTAL);
     p->nbPioche = 0;
     char lettres[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
                       'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
@@ -17,7 +17,7 @@ void remplirChevalet(Pioche* p) {
 
     for (int i = 0; i < sizeof(lettres) / sizeof(lettres[0]); i++) {
         for (int j = 0; j < frequences[i]; j++) {
-            vecteurAjouterFin(&p->chevalet, lettres[i]);
+            ajouterAuVecteur(&p->chevalet, lettres[i]);
             ++p->nbPioche;
         }
     }

@@ -1,43 +1,51 @@
-#include "vecteur.h"
-#include <string.h>
+#include <assert.h>
 #include <stdlib.h>
+#include "vecteur.h"
 
-void vecteurInitialiser(Vecteur* v, size_t capaciteInitiale) {
-    v->donnees = (char*)malloc(capaciteInitiale * sizeof(char));
+int initialiserVecteur(Vecteur* v, int capacite) {
+    assert(capacite > 0);
+    v->capacite = capacite;
     v->taille = 0;
-    v->capacite = capaciteInitiale;
+    v->donnees = (ItemV*)malloc(sizeof(ItemV) * capacite);
+    return v->donnees != NULL;
 }
 
-void vecteurAjouterFin(Vecteur* v, char element) {
+int taille(const Vecteur* v) {
+    return v->taille;
+}
+
+int ajouterAuVecteur(Vecteur* v, ItemV it) {
     if (v->taille == v->capacite) {
-        v->capacite *= 2;
-        v->donnees = realloc(v->donnees, v->capacite * sizeof(char));
+        ItemV* tab = (ItemV*)realloc(v->donnees, sizeof(ItemV) * v->capacite * FACTEUR);
+        if (tab == NULL)
+            return 0;
+        v->capacite *= FACTEUR;
+        v->donnees = tab;
     }
-    v->donnees[v->taille++] = element;
+    v->donnees[v->taille++] = it;
+    return 1;
 }
 
+ItemV obtenir(const Vecteur* v, int i) {
+    assert(i >= 0 && i < v->taille);
+    return v->donnees[i];
+}
 
-void vecteurSupprimerA(Vecteur* v, size_t index) {
-    for (++index; index < v->taille; ++index)
-        v->donnees[index - 1] = v->donnees[index];
+void modifier(Vecteur* v, int i, ItemV it) {
+    assert(i >= 0 && i < v->taille);
+    v->donnees[i] = it;
+}
+
+void supprimerA(Vecteur* v, int i) {
+    assert(i >= 0 && i < v->taille);
+    for (++i; i < v->taille; ++i)
+        v->donnees[i - 1] = v->donnees[i];
     --v->taille;
 }
 
-void vecteurInsererA(Vecteur* v, size_t index, char element) {
-    if (v->taille == v->capacite) {
-        v->capacite *= 2;
-        v->donnees = realloc(v->donnees, v->capacite * sizeof(char));
-    }
-    memmove(&v->donnees[index + 1], &v->donnees[index], (v->taille - index) * sizeof(char));
-    v->donnees[index] = element;
-    v->taille++;
-}
-char vecteurSupprimerFin(Vecteur* v) {
-    return v->donnees[--v->taille];
-}
-
-int retailler(Vecteur* v, int taille) {
-    char* tab = (char*)realloc(v->donnees, sizeof(char) * taille);
+int redimensionner(Vecteur* v, int taille) {
+    assert(taille > 0);
+    ItemV* tab = (ItemV*)realloc(v->donnees, sizeof(ItemV) * taille);
     if (tab == NULL)
         return 0;
     v->donnees = tab;
@@ -47,9 +55,10 @@ int retailler(Vecteur* v, int taille) {
     return 1;
 }
 
-void vecteurLiberer(Vecteur* v) {
+void libererVecteur(Vecteur* v) {
     free(v->donnees);
-    v->donnees = NULL;
-    v->taille = 0;
-    v->capacite = 0;
+}
+
+char vecteurSupprimerFin(Vecteur* v) {
+    return v->donnees[--v->taille];
 }

@@ -1,11 +1,11 @@
 #include "joueur.h"
 
 void remplirJoueur(Joueur* joueur,Pioche* p, const int id) {
-    vecteurInitialiser(&joueur->main,LETTREJOUEUR);
+    initialiserVecteur(&joueur->main,LETTREJOUEUR);
     joueur->tailleMain=0;
     joueur->idJoueur=id;
     for (int i = 0; i < LETTREJOUEUR; i++) {
-        vecteurAjouterFin(&joueur->main,piocher(p));
+        ajouterAuVecteur(&joueur->main,piocher(p));
         ++joueur->tailleMain;
     }
     trierMain(joueur);
@@ -35,7 +35,7 @@ void supprimerLettre (Joueur *joueur,const char *mot) {
     for (int i = 0; mot[i]!= '\0'; i++) {
         for (int j = 0; j<joueur->tailleMain; j++) {
             if (joueur->main.donnees[j] == mot[i]) {
-                vecteurSupprimerA(&joueur->main,j);
+                supprimerA(&joueur->main,j);
                 --joueur->tailleMain;
                 break;
             }
@@ -46,7 +46,7 @@ void supprimerLettre (Joueur *joueur,const char *mot) {
 
 int verifierMotDansMain(const Vecteur main, const char* mot) {
     Vecteur copieMain;
-    vecteurInitialiser(&copieMain,main.taille);
+    initialiserVecteur(&copieMain,main.taille);
     copieMain.taille=main.taille;
     for (int i=0; i < main.taille; i++) {
         copieMain.donnees[i]=main.donnees[i];
