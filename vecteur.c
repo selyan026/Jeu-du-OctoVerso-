@@ -17,7 +17,7 @@ void vecteurAjouterFin(Vecteur* v, char element) {
 }
 
 
-char vecteurSupprimerA(Vecteur* v, size_t index) {
+void vecteurSupprimerA(Vecteur* v, size_t index) {
     for (++index; index < v->taille; ++index)
         v->donnees[index - 1] = v->donnees[index];
     --v->taille;

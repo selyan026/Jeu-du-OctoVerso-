@@ -3,7 +3,7 @@
 #include <string.h>
 
 int estDansDictionnaire(const char *mot) {
-    FILE *fichier = fopen("DICO.txt", "r"); // Ouvre le fichier en mode lecture
+    FILE *fichier = fopen("ods4.txt", "r"); // Ouvre le fichier en mode lecture
     if (fichier == NULL) {
         perror("Erreur d'ouverture du fichier");
         return 0;

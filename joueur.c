@@ -36,11 +36,11 @@ void supprimerLettre (Joueur *joueur,const char *mot) {
         for (int j = 0; j<joueur->tailleMain; j++) {
             if (joueur->main.donnees[j] == mot[i]) {
                 vecteurSupprimerA(&joueur->main,j);
-                joueur->tailleMain--;
+                --joueur->tailleMain;
                 break;
             }
+            }
         }
-    }
     trierMain(joueur);
 }
 
