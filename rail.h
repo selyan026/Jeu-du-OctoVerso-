@@ -6,7 +6,7 @@
 #include "stdio.h"
 #include "string.h"
 
-enum{TAILLE_RAIL=9,MAX_MOT=5};
+enum{TAILLE_RAIL=9};
 
 typedef struct{
   char rail[TAILLE_RAIL];
