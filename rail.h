@@ -13,8 +13,23 @@ typedef struct{
   int tailleRail;
 }Rail;
 
+/**
+ * @brief Initialise un rail en combinant deux mots dans un ordre alphabétique.
+ *
+ * @param r [out] Pointeur vers la structure `Rail` à initialiser.
+ *                Le champ `rail` contiendra la concaténation des deux mots
+ *                dans l'ordre alphabétique, et le champ `tailleRail` sera mis
+ *                à jour pour refléter la longueur totale du rail.
+ * @param mot1 [in] Premier mot à comparer et concaténer. Utilisé uniquement en lecture.
+ * @param mot2 [in] Deuxième mot à comparer et concaténer. Utilisé uniquement en lecture.
+ */
+void initRail(Rail* r, const char* mot1, const char* mot2);
 
-void initRail(Rail* r,const char* mot1,const char* mot2);
+/**
+ * @brief Affiche le contenu d'un rail dans deux ordres : normal et inversé.
+ * @param rail [in] Pointeur vers la structure `Rail` à afficher.
+ */
 void afficherRail(Rail* rail);
+
 
 #endif //RAIL_H

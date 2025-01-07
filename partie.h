@@ -1,6 +1,4 @@
-//
-// Created by selyan on 26/12/2024.
-//
+
 
 #ifndef PARTIE_H
 #define PARTIE_H
@@ -29,12 +27,24 @@ typedef struct{
 void initJoueurs(Partie* p,Pioche* v);
 
 /**
- * @brief Initialise une partie contenant 2 joueurs en distrubuant les 12 lettres a chacun,
+ * @brief Initialise une partie contenant 2 joueurs en distrubuant les 12 lettres à chacun,
  * mettant le reste des lettres dans la pioche et le plateau de jeu comme vide.
  * @param[in] p Adresse de la partie devant etre initialisee.
  */
 void initialiserPartie(Partie* p);
-void demanderMot(Partie* p,char mot[MAX_MOT]);
+
+/**
+ * @brief Demande à un joueur de saisir un mot valide et le stocke dans un tableau.
+ * @param p [in] Pointeur vers la structure de la partie en cours.
+ * @param mot [out] Tableau de caractères où le mot saisi sera stocké.
+ */
+void demanderMot(Partie* p, char mot[MAX_MOT]);
+
+
+/**
+ * @brief Permet de passer au joueur suivant.
+* @param p [in, out] Pointeur vers la structure de la partie en cours
+ */
 void joueurSuivant(Partie* p);
 
 
