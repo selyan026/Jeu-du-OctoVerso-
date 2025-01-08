@@ -1,5 +1,7 @@
 #include "joueur.h"
 
+#include <stdio.h>
+
 void remplirJoueur(Joueur* joueur,Pioche* p, const int id) {
     initialiserVecteur(&joueur->main,LETTREJOUEUR);
     joueur->tailleMain=0;
