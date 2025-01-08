@@ -27,6 +27,8 @@ void joueurSuivant(Partie* p) {
     p->joueurActuelle%=2;
 }
 
+
+
 void savoirQuiJoue(Partie* p,const char* mot1,const char* mot2) {
     if (strcmp(mot1,mot2)<0) {
         p->joueurActuelle=J1;

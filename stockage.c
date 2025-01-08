@@ -1,6 +1,4 @@
-//
-// Created by antho on 08/01/2025.
-//
+
 
 #include "stockage.h"
 

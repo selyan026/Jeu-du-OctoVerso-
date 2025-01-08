@@ -51,6 +51,18 @@ void demanderMot(Partie* p, char mot[MAX_MOT]);
 */
 void joueurSuivant(Partie* p);
 
-
+/**
+* @brief Détermine quel joueur commence à jouer en fonction de l'ordre alphabétique des mots proposés.
+*
+* Compare les deux mots proposés par les joueurs pour déterminer qui commence. Le joueur ayant proposé
+* le mot qui apparaît en premier dans l'ordre alphabétique jouera en premier.
+*
+* @param[in,out] p Pointeur vers la structure Partie actuelle.
+* @param[in] mot1 Mot proposé par le joueur 1.
+* @param[in] mot2 Mot proposé par le joueur 2.
+*
+* @pre Les chaînes de caractères `mot1` et `mot2` doivent être valides et null-terminées.
+*/
+void savoirQuiJoue(Partie* p,const char* mot1,const char* mot2);
 
 #endif //PARTIE_H

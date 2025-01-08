@@ -1,7 +1,7 @@
 #include "pioche.h"
 #include <time.h>
 #include <stdlib.h>
-
+#include <assert.h>
 
 
 
@@ -45,5 +45,31 @@ char piocher(Pioche* pioche) {
 void initPioche(Pioche* p) {
     remplirChevalet(p);
     melangerPioche(p);
+}
+
+void testPioche() {
+    Pioche p;
+    initPioche(&p);
+
+    // Vérifie si la pioche a été correctement remplie avec le bon nombre d'éléments
+    assert(p.nbPioche == LETTRETOTAL);
+
+    // Sauvegarde de la première lettre avant mélange
+    char premièreLettre = p.chevalet.donnees[0];
+    melangerPioche(&p);  // Mélange la pioche
+    assert(p.chevalet.donnees[0] != premièreLettre);  // Vérifie que le mélange a bien eu lieu
+
+    // Teste la pioche d'une lettre
+    char lettrePiochée = piocher(&p);
+    assert(lettrePiochée != '\0');  // Vérifie qu'une lettre valide a été piochée
+    assert(p.nbPioche == LETTRETOTAL - 1);  // Vérifie que le nombre de pioches a diminué de 1
+
+    // Teste la pioche quand la pioche est vide
+    Pioche vide;
+    initPioche(&vide);
+    while (vide.nbPioche > 0) {
+        piocher(&vide);  // Vide la pioche
+    }
+    assert(piocher(&vide) == '\0');  // Vérifie qu'une pioche vide retourne '\0'
 }
 
