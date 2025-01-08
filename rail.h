@@ -20,9 +20,9 @@ typedef struct{
  * @brief Initialise un rail en combinant deux mots dans un ordre alphabétique.
  *
  * @param r [out] Pointeur vers la structure `Rail` à initialiser.
- *                Le champ `rail` contiendra la concaténation des deux mots
- *                dans l'ordre alphabétique, et le champ `tailleRail` sera mis
- *                à jour pour refléter la longueur totale du rail.
+ * Le champ `rail` contiendra la concaténation des deux mots
+ * dans l'ordre alphabétique, et le champ `tailleRail` sera mis
+ * à jour pour refléter la longueur totale du rail.
  * @param mot1 [in] Premier mot à comparer et concaténer. Utilisé uniquement en lecture.
  * @param mot2 [in] Deuxième mot à comparer et concaténer. Utilisé uniquement en lecture.
  */

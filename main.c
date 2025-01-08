@@ -4,11 +4,14 @@ int main(){
     char mot1[MAX_MOT];
     char mot2[MAX_MOT];
     Partie p;
+    initialiserStockage(&p.stockage,1);
     initialiserPartie(&p);
     demanderMot(&p,mot1);
+    ajouterMotStockage(&p.stockage,mot1);
     supprimerLettre(&p.joueur[p.joueurActuelle],mot1);
     joueurSuivant(&p);
     demanderMot(&p,mot2);
+    ajouterMotStockage(&p.stockage,mot2);
     supprimerLettre(&p.joueur[p.joueurActuelle],mot2);
     initRail(&p.rail,mot1,mot2);
     afficherRail(&p.rail);
@@ -17,6 +20,7 @@ int main(){
     joueurSuivant(&p);
     afficherJoueur(&p.joueur[p.joueurActuelle]);
     joueurSuivant(&p);
+
 
     return 0;
 }

@@ -52,8 +52,8 @@ int verifierMotDansMain(const Vecteur main, const char* mot);
 /**
  * @brief Supprime les lettres d'un mot de la main d'un joueur.
  * @param joueur [in, out] Pointeur vers le joueur dont la main doit être modifiée.
- *                         La main du joueur est mise à jour en supprimant les lettres
- *                         du mot et en ajustant sa taille.
+ * La main du joueur est mise à jour en supprimant les lettres
+ * du mot et en ajustant sa taille.
  * @param mot [in] Le mot contenant les lettres à supprimer de la main du joueur.
 
  */

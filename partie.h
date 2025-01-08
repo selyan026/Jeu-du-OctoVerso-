@@ -7,6 +7,7 @@
 #include "pioche.h"
 #include "joueur.h"
 #include "rail.h"
+#include "stockage.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -19,6 +20,7 @@ typedef struct{
     Rail rail;
     Pioche pioche;
     int joueurActuelle;
+    Stockage stockage;
 }Partie;
 
 /**
@@ -44,9 +46,9 @@ void demanderMot(Partie* p, char mot[MAX_MOT]);
 
 
 /**
- * @brief Permet de passer au joueur suivant.
+* @brief Permet de passer au joueur suivant.
 * @param p [in, out] Pointeur vers la structure de la partie en cours
- */
+*/
 void joueurSuivant(Partie* p);
 
 

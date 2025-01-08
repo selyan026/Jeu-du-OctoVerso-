@@ -17,4 +17,6 @@ add_executable(S1_02 main.c
         rail.c
         rail.h
         itemvecteur.h
+        stockage.c
+        stockage.h
 )
