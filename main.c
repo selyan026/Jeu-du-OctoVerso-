@@ -3,7 +3,6 @@
 int main(){
     char mot1[MAX_MOT];
     char mot2[MAX_MOT];
-    char mot3[MAX_MOT];
     Partie p;
     initialiserStockage(&p.stockage,1);
     initialiserPartie(&p);
