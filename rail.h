@@ -13,6 +13,7 @@ enum{TAILLE_RAIL=9};
 */
 typedef struct{
   char rail[TAILLE_RAIL];
+  char verso[TAILLE_RAIL];
   int tailleRail;
 }Rail;
 
@@ -33,6 +34,8 @@ void initRail(Rail* r, const char* mot1, const char* mot2);
  * @param rail [in] Pointeur vers la structure `Rail` à afficher.
  */
 void afficherRail(Rail* rail);
+
+void retorunerRail(Rail* r);
 
 
 #endif //RAIL_H
