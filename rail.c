@@ -35,4 +35,3 @@ void retorunerRail(Rail* r){
     }
     r->verso[r->tailleRail]='\0';
 }
-A
