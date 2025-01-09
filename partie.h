@@ -13,7 +13,7 @@
 
 enum {NBJOUEURS=2,MAX_MOT=5};// Nombre de joueurs qui jouent
 /* *
-* Représente une partie (i.e ses joueurs, son rail, sa pioche, le joueurActuelle).
+* Représente une partie (i.e ses joueurs, son recto, sa pioche, le joueurActuelle).
 */
 typedef struct{
     Joueur joueur[NBJOUEURS];

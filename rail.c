@@ -4,14 +4,14 @@
 void initRail(Rail* r,const char* mot1,const char* mot2) {
     r->tailleRail=0;
     if (strcmp(mot1,mot2)<0) {
-        strcpy(r->rail, mot1);
-        strcat(r->rail, mot2);
-        r->tailleRail=strlen(r->rail);
+        strcpy(r->recto, mot1);
+        strcat(r->recto, mot2);
+        r->tailleRail=strlen(r->recto);
     }
     if (strcmp(mot1,mot2)>0) {
-        strcpy(r->rail, mot2);
-        strcat(r->rail, mot1);
-        r->tailleRail=strlen(r->rail);
+        strcpy(r->recto, mot2);
+        strcat(r->recto, mot1);
+        r->tailleRail=strlen(r->recto);
     }
     retorunerRail(r);
 }
@@ -19,7 +19,7 @@ void initRail(Rail* r,const char* mot1,const char* mot2) {
 void afficherRail(Rail* rail) {
     printf("r> ");
     for (int i=0;i< rail->tailleRail;++i) {
-        printf("%c",rail->rail[i]);
+        printf("%c",rail->recto[i]);
     }
     printf("\n");
     printf("v> ");
@@ -31,7 +31,7 @@ void afficherRail(Rail* rail) {
 
 void retorunerRail(Rail* r){
     for (int i=0,j=r->tailleRail-1;i<r->tailleRail;++i,--j){
-        r->verso[i]=r->rail[j];
+        r->verso[i]=r->recto[j];
     }
     r->verso[r->tailleRail]='\0';
 }
