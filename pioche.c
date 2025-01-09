@@ -81,8 +81,6 @@ void testPioche() {
     // Teste la pioche d'une lettre
     char lettrePiochee = piocher(&p);
     assert(lettrePiochee != '\0');  // Vérifie qu'une lettre valide a été piochée
-    printf("%d",p.nbPioche);
-    printf("%c", lettrePiochee);
     assert(p.nbPioche == LETTRETOTAL - 1);  // Vérifie que le nombre de pioches a diminué de 1
 
     // Teste la pioche quand la pioche est vide
