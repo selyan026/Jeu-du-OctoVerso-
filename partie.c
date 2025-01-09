@@ -19,7 +19,7 @@ void demanderMot(Partie* p,char mot[MAX_MOT]){
     do{
         printf("%d> ",p->joueurActuelle+1);
         scanf("%s",mot);
-    }while(strlen(mot)!=MAX_MOT-1 || !motDansStockage(&p->stockage,mot));
+    }while(strlen(mot)!=MAX_MOT-1 || !verifierMotDansMain(p->joueur[p->joueurActuelle].main,mot) || !motDansStockage(&p->stockage,mot) || !estDansDictionnaire(mot));
 }
 
 void joueurSuivant(Partie* p) {
