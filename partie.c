@@ -37,6 +37,8 @@ void savoirQuiJoue(Partie* p,const char* mot1,const char* mot2) {
         p->joueurActuelle=J2;
 }
 
-
-
+void testPartie(){
+    testPioche();
+    testRail();
+}
 

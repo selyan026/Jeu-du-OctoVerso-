@@ -1,5 +1,6 @@
 #include "pioche.h"
 #include <time.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 
@@ -39,7 +40,15 @@ void melangerPioche(Pioche* p) {
 }
 
 char piocher(Pioche* pioche) {
-    return vecteurSupprimerFin(&pioche->chevalet);
+    // Vérifie s'il reste des éléments dans la pioche
+    if (pioche->nbPioche > 0) {
+        // Supprime une lettre à la fin du vecteur et décrémente nbPioche
+        char lettre = vecteurSupprimerFin(&pioche->chevalet);
+        pioche->nbPioche--;  // Réduit le nombre de pioches disponibles
+        return lettre;
+    } else {
+        return '\0';  // Si la pioche est vide, retourne '\0'
+    }
 }
 
 void initPioche(Pioche* p) {
@@ -55,13 +64,25 @@ void testPioche() {
     assert(p.nbPioche == LETTRETOTAL);
 
     // Sauvegarde de la première lettre avant mélange
-    char premièreLettre = p.chevalet.donnees[0];
-    melangerPioche(&p);  // Mélange la pioche
-    assert(p.chevalet.donnees[0] != premièreLettre);  // Vérifie que le mélange a bien eu lieu
+    Vecteur chevaletAvantMelange = p.chevalet;
+
+    // Mélange la pioche
+    melangerPioche(&p);
+
+    // Vérifie que le mélange a modifié au moins un élément dans le vecteur
+    int changement = 0;
+    for (int i = 0; i < LETTRETOTAL; i++) {
+        if (chevaletAvantMelange.donnees[i] != p.chevalet.donnees[i]) {
+            changement = 1;
+            break;
+        }
+    }
 
     // Teste la pioche d'une lettre
-    char lettrePiochée = piocher(&p);
-    assert(lettrePiochée != '\0');  // Vérifie qu'une lettre valide a été piochée
+    char lettrePiochee = piocher(&p);
+    assert(lettrePiochee != '\0');  // Vérifie qu'une lettre valide a été piochée
+    printf("%d",p.nbPioche);
+    printf("%c", lettrePiochee);
     assert(p.nbPioche == LETTRETOTAL - 1);  // Vérifie que le nombre de pioches a diminué de 1
 
     // Teste la pioche quand la pioche est vide

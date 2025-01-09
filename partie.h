@@ -65,4 +65,5 @@ void joueurSuivant(Partie* p);
 */
 void savoirQuiJoue(Partie* p,const char* mot1,const char* mot2);
 
+void testPartie();
 #endif //PARTIE_H

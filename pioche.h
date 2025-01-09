@@ -77,6 +77,6 @@ void initPioche(Pioche* p);
  * mélange et pioche de lettres. Elle vérifie également les préconditions et le comportement
  * attendu lors de la pioche et du mélange.
  */
-void TestPioche(Pioche* p);
+void testPioche();
 
 #endif //PIOCHE_H

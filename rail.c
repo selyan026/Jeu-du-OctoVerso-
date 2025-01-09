@@ -42,7 +42,7 @@ void testRail() {
 
     // Test de initRail avec deux mots de 4 lettres
     initRail(&rail, "CHAT", "LION");
-    assert(rail.tailleRail == TAILLE_RAIL - 1);
+    assert(rail.tailleRail == TAILLE_RAIL -1);
     assert(strcmp(rail.recto, "CHATLION") == 0);
     assert(strcmp(rail.verso, "NOILTAHC") == 0);
 
