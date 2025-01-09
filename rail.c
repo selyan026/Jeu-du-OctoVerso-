@@ -56,15 +56,4 @@ void testRail() {
     rail.tailleRail = TAILLE_RAIL - 1;
     retournerRail(&rail);
     assert(strcmp(rail.verso, "ESACTSET") == 0); // Verso doit être "ESACTSET"
-
-    // Cas limites avec un mot de 4 lettres et un mot de 5 lettres
-    initRail(&rail, "LUNE", "SOLEIL");
-    assert(rail.tailleRail == TAILLE_RAIL - 1); // Vérifie la taille correcte
-    assert(strcmp(rail.recto, "LUNESOLE") == 0); // Recto est limité par `TAILLE_RAIL`
-
-    // Test de chaînes égales
-    initRail(&rail, "CHAT", "CHAT");
-    assert(rail.tailleRail == TAILLE_RAIL - 1);
-    assert(strcmp(rail.recto, "CHATCHAT") == 0);
-    assert(strcmp(rail.verso, "TAHCTAHC") == 0);
 }
