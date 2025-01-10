@@ -66,7 +66,7 @@ void joueurSuivant(Partie* p);
 void savoirQuiJoue(Partie* p,const char* mot1,const char* mot2);
 
 void testPartie();
-
+void tourDeJeu(Partie* p);
 void enleverParentheses(char* mot, char* motVide);
 void extraireEntreParentheses(const char* mot, char* motParanthese);
 #endif //PARTIE_H
