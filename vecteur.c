@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "vecteur.h"
 
@@ -61,4 +62,37 @@ void libererVecteur(Vecteur* v) {
 
 char vecteurSupprimerFin(Vecteur* v) {
     return v->donnees[--v->taille];
+}
+
+void testVecteur() {
+    Vecteur v;
+
+    // Test de l'initialisation
+    assert(initialiserVecteur(&v, 5) == 1);
+
+    // Test de l'ajout d'éléments
+    assert(ajouterAuVecteur(&v, 'A') == 1);
+    assert(ajouterAuVecteur(&v, 'B') == 1);
+    assert(ajouterAuVecteur(&v, 'C') == 1);
+
+    // Test d'accès aux éléments
+    assert(obtenir(&v, 0) == 'A');
+    assert(obtenir(&v, 1) == 'B');
+
+    // Test de modification d'un élément
+    modifier(&v, 2, 'Z'); // Remplace 'C' par 'Z'
+    assert(obtenir(&v, 2) == 'Z');
+
+    // Test de suppression d'un élément à une position donnée
+    supprimerA(&v, 1); // Supprime 'B'
+    assert(obtenir(&v, 1) == 'Z');
+
+    // Test de redimensionnement automatique
+    for (int i = 0; i < 5; i++) {
+        assert(ajouterAuVecteur(&v, 'X') == 1);
+    }
+    assert(v.capacite > 5); // Vérification que la capacité a augmenté
+
+    // Libération de la mémoire
+    libererVecteur(&v);
 }

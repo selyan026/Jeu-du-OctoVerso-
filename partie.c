@@ -121,6 +121,7 @@ void enleverEntreParentheses(char* mot, char* motParanthese) {
 void testPartie(){
     testPioche();
     testRail();
+    testVecteur();
 }
 
 
