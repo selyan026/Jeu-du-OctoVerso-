@@ -58,15 +58,65 @@ void afficherRail(Rail* rail);
 void retournerRailVerso(Rail* r);
 
 /**
+ * @brief Génère le recto du rail en inversant l'ordre des lettres du verso.
+ *
+ * @param[in,out] r Pointeur vers la structure Rail dont le verso sera généré.
+ *
+ * @pre 'r' doit être un pointeur valide non nul.
+ * @pre Le champ 'recto' de la structure 'Rail' doit contenir une chaîne de caractères
+ *      null-terminée, avec sa longueur définie par le champ 'tailleRail'.
+ * @pre La valeur de 'tailleRail' doit être correcte (i.e de 8).
+ */
+void retournerRailRecto(Rail* r);
+
+
+/**
  * @brief Teste les fonctions associées à la gestion des rails
  * @pre La constante 'TAILLE_RAIL' doit être définie et cohérente avec la taille des champs
  * @pre 'recto' et 'verso' de la structure 'Rail'.
  * */
 void testRail();
 
-int verifMotRail(Rail* r,char* mot,char* motParanthese,char* input);
+/**
+ * @brief Vérifie si un mot est présent dans le rail, soit dans le recto, soit dans le verso.
+ *
+ * @param r [in] Pointeur vers la structure 'Rail' à vérifier.
+ * @param mot [in] Mot original, potentiellement entouré de parenthèses, utilisé pour
+ *                 déterminer où chercher ('début' ou 'fin').
+ * @param motParanthese [in] Version du mot sans parenthèses à rechercher dans le rail.
+ * @param input [in] Caractère déterminant la direction de la recherche :
+ *                   - `'R'` pour chercher dans le recto du rail.
+ *                   - `'V'` pour chercher dans le verso.
+ * @return Retourne 1 si le mot est trouvé dans le rail selon les critères, 0 sinon.
+ *
+ * @pre 'r' doit être un pointeur valide et initialisé.
+ * @pre 'mot', 'motParanthese', et 'input' doivent être des chaînes de caractères valides.
+ * @pre La longueur de `motParanthese` ne doit pas dépasser la taille actuelle du rail (`r->tailleRail`).
+ */
+int verifMotRail(const Rail* r,const char* mot,const char* motParanthese,const char* input);
 
+
+/**
+ * @brief Insère un mot dans le rail rotatif tout en expulsant une partie existante.
+ *
+ * Cette fonction insère le mot spécifié ('motHorsParanthese') dans le recto ou le verso du rail,
+ * en fonction de la direction spécifiée par 'input'. Les lettres expulsées sont stockées
+ * dans le tableau 'expulse'.
+ *
+ * @param r [in, out] Pointeur vers la structure 'Rail' à modifier.
+ * @param mot [in] Mot complet à insérer, incluant potentiellement des parenthèses.
+ * @param motHorsParanthese [in] Version du mot sans parenthèses à insérer dans le rail.
+ * @param input [in] Caractère déterminant la direction de l'insertion :
+ *                   - `'R'` pour insérer dans le recto du rail.
+ *                   - Tout autre caractère pour insérer dans le verso.
+ * @param expulse [out] Tableau destiné à stocker les lettres expulsées lors de l'insertion.
+ *
+ * @pre 'r' doit être un pointeur valide et initialisé.
+ * @pre 'mot', 'motHorsParanthese', et 'input' doivent être des chaînes de caractères valides.
+ * @pre 'expulse' doit être un tableau pré-alloué capable de stocker au moins 'TAILLE_RAIL - 1' caractères.
+ * @pre 'r->tailleRail' doit être cohérent avec la longueur des chaînes 'recto' et 'verso' du rail.
+ */
 void inserer_mots(Rail* r, const char* mot, const char* motHorsParanthese, const char* input,char* expulse);
 
-void retournerRailRecto(Rail* r);
+
 #endif //RAIL_H

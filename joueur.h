@@ -41,7 +41,7 @@ void afficherJoueur(const Joueur* joueur);
 void trierMain(Joueur* j);
 
 /**
- * @brief Vérifie si un mot peut être formé à partir des lettres disponibles dans une main donnée.
+ * @brief Vérifie si un mot est composé des lettres disponibles dans une main donnée.
  * @param main [in] Le vecteur représentant la main contenant les lettres disponibles.
  * Chaque élément du vecteur correspond à une lettre (type 'char').
  * @param mot [in] Le mot à vérifier (chaîne de caractères).

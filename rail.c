@@ -17,7 +17,7 @@ void initRail(Rail* r,const char* mot1,const char* mot2) {
     retournerRailVerso(r);
 }
 
-void afficherRail(Rail* rail) {
+void afficherRail(const Rail* rail) {
     printf("r> ");
     for (int i=0;i< rail->tailleRail;++i) {
         printf("%c",rail->recto[i]);
@@ -44,7 +44,7 @@ void retournerRailRecto(Rail* r){
 }
 
 
-int verifMotRail(Rail* r,char* mot,char* motParanthese,char* input) {
+int verifMotRail(const Rail* r,const char* mot,const char* motParanthese,const char* input) {
     int trouve=0;
     if (input[0]=='V') {
         if (mot[0]=='(') {
@@ -168,14 +168,6 @@ void inserer_mots(Rail* r, const char* mot, const char* motHorsParanthese, const
         retournerRailRecto(r);
     }
 }
-
-
-
-
-
-
-
-
 
 
 void testRail() {
