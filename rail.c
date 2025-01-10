@@ -14,7 +14,7 @@ void initRail(Rail* r,const char* mot1,const char* mot2) {
         strcat(r->recto, mot1);
         r->tailleRail=strlen(r->recto);
     }
-    retournerRail(r);
+    retournerRailVerso(r);
 }
 
 void afficherRail(Rail* rail) {
@@ -30,12 +30,19 @@ void afficherRail(Rail* rail) {
     printf("\n");
 }
 
-void retournerRail(Rail* r){
+void retournerRailVerso(Rail* r){
     for (int i=0,j=r->tailleRail-1;i<r->tailleRail;++i,--j){
         r->verso[i]=r->recto[j];
     }
     r->verso[r->tailleRail]='\0';
 }
+void retournerRailRecto(Rail* r){
+    for (int i=0,j=r->tailleRail-1;i<r->tailleRail;++i,--j){
+        r->recto[i]=r->verso[j];
+    }
+    r->recto[r->tailleRail]='\0';
+}
+
 
 int verifMotRail(Rail* r,char* mot,char* motParanthese,char* input) {
     int trouve=0;
@@ -52,23 +59,19 @@ int verifMotRail(Rail* r,char* mot,char* motParanthese,char* input) {
             }
         }
         else {
-            for (int i=0; i<=strlen(motParanthese); i++) {
-
-                for (int i=0; i<=strlen(motParanthese); i++) {
-                    if (r->verso[i]==motParanthese[i]) {
-                        trouve=1;
-                    }
-                    else {
-                        trouve=0;
-                        break;
-                    }
+            for (int i=0; i<strlen(motParanthese); i++) {
+                if (r->verso[i]==motParanthese[i]) {
+                    trouve=1;
+                }
+                else {
+                    trouve=0;
+                    break;
                 }
             }
         }
     }
     if (input[0]=='R') {
         if (mot[0]=='(') {
-
             for (int i=r->tailleRail-1,j=strlen(motParanthese)-1; j>=0; i--,j--) {
                 if (r->recto[i]==motParanthese[j]) {
                     trouve=1;
@@ -80,7 +83,7 @@ int verifMotRail(Rail* r,char* mot,char* motParanthese,char* input) {
             }
         }
         else {
-            for (int i=0; i<=strlen(motParanthese); i++) {
+            for (int i=0; i<strlen(motParanthese); i++) {
                 if (r->recto[i]==motParanthese[i]) {
                     trouve=1;
                 }
@@ -94,14 +97,80 @@ int verifMotRail(Rail* r,char* mot,char* motParanthese,char* input) {
     return trouve;
 }
 
-void inserer_mots(Rail rail, const char* mot, const char* motSansParanthese) {
-    // Vérifier si les mots ne sont pas trop longs pour le rail
-    int len_mot2 = strlen(motSansParanthese);
-    char tmp[9];
-
-
-
+void inserer_mots(Rail* r, const char* mot, const char* motHorsParanthese, const char* input,char* expulse) {
+    int len_mot = strlen(motHorsParanthese);
+    char tmp[r->tailleRail-len_mot+1];
+    char nouveauRail[9];
+    if (input[0]=='R') {
+        if (mot[0]=='(') {
+            for (int i=len_mot,j=0;i<r->tailleRail;++i,++j) {
+                tmp[j]=r->recto[i];
+            }
+            tmp[r->tailleRail-len_mot+1]='\0';
+            strcpy(nouveauRail,tmp);
+            for (int i=0;i<len_mot;++i) {
+                expulse[i]=r->recto[i];
+            }
+            for (int i=strlen(tmp),j=0;i<r->tailleRail;++i,++j)
+                nouveauRail[i]=motHorsParanthese[j];
+            for (int i=0; i<r->tailleRail;++i) {
+                r->recto[i]=nouveauRail[i];
+            }
+        }
+        else {
+            for (int i=0;i<r->tailleRail-len_mot;++i) {
+                tmp[i]=r->recto[i];
+            }
+            tmp[r->tailleRail-len_mot]='\0';
+            strcpy(nouveauRail,motHorsParanthese);
+            for (int i=r->tailleRail-len_mot,j=0;i<r->tailleRail;++i,++j) {
+                expulse[j]=r->recto[i];
+            }
+            for (int i=len_mot,j=0;i<r->tailleRail;++i,++j)
+                nouveauRail[i]=tmp[j];
+            for (int i=0; i<r->tailleRail;++i) {
+                r->recto[i]=nouveauRail[i];
+            }
+        }
+        retournerRailVerso(r);
+    }
+    else {
+        if (mot[0]=='(') {
+            for (int i=len_mot,j=0;i<r->tailleRail;++i,++j) {
+                tmp[j]=r->verso[i];
+            }
+            tmp[r->tailleRail-len_mot+1]='\0';
+            strcpy(nouveauRail,tmp);
+            for (int i=0;i<len_mot;++i) {
+                expulse[i]=r->verso[i];
+            }
+            for (int i=strlen(tmp),j=0;i<r->tailleRail;++i,++j)
+                nouveauRail[i]=motHorsParanthese[j];
+            for (int i=0; i<r->tailleRail;++i) {
+                r->verso[i]=nouveauRail[i];
+            }
+        }
+        else {
+            for (int i=0;i<r->tailleRail-len_mot;++i) {
+                tmp[i]=r->verso[i];
+            }
+            tmp[r->tailleRail-len_mot]='\0';
+            strcpy(nouveauRail,motHorsParanthese);
+            for (int i=r->tailleRail-len_mot,j=0;i<r->tailleRail;++i,++j) {
+                expulse[j]=r->verso[i];
+            }
+            for (int i=len_mot,j=0;i<r->tailleRail;++i,++j)
+                nouveauRail[i]=tmp[j];
+            for (int i=0; i<r->tailleRail;++i) {
+                r->verso[i]=nouveauRail[i];
+            }
+        }
+        retournerRailRecto(r);
+    }
 }
+
+
+
 
 
 
@@ -126,6 +195,6 @@ void testRail() {
     // Test de retournerRail
     strcpy(rail.recto, "TESTCASE"); // Changement manuel du recto
     rail.tailleRail = TAILLE_RAIL - 1;
-    retournerRail(&rail);
+    retournerRailVerso(&rail);
     assert(strcmp(rail.verso, "ESACTSET") == 0); // Verso doit être "ESACTSET"
 }

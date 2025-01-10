@@ -20,5 +20,6 @@ int main(){
     afficherJoueur(&p.joueur[J2]);
     savoirQuiJoue(&p,mot1,mot2);
     tourDeJeu(&p);
+    afficherRail(&p.rail);
     return 0;
 }

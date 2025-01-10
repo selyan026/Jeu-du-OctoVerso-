@@ -55,7 +55,7 @@ void afficherRail(Rail* rail);
  *      null-terminée, avec sa longueur définie par le champ 'tailleRail'.
  * @pre La valeur de 'tailleRail' doit être correcte (i.e de 8).
  */
-void retournerRail(Rail* r);
+void retournerRailVerso(Rail* r);
 
 /**
  * @brief Teste les fonctions associées à la gestion des rails
@@ -65,4 +65,8 @@ void retournerRail(Rail* r);
 void testRail();
 
 int verifMotRail(Rail* r,char* mot,char* motParanthese,char* input);
+
+void inserer_mots(Rail* r, const char* mot, const char* motHorsParanthese, const char* input,char* expulse);
+
+void retournerRailRecto(Rail* r);
 #endif //RAIL_H
