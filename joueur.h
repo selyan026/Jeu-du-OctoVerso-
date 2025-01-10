@@ -59,6 +59,7 @@ int verifierMotDansMain(const Vecteur main, const char* mot);
  */
 void supprimerLettre(Joueur *joueur, const char *mot);
 
+void donnerLettres(Joueur* j,char expulse);
 
 
 

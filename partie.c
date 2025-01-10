@@ -54,6 +54,10 @@ void tourDeJeu(Partie* p) {
         enleverEntreParentheses(mot,motHorsParanthese);
     }while (!motDansStockage(&p->stockage,motVide) || !verifMotRail(&p->rail,mot,motParanthese,input) || !estDansDictionnaire(motVide));
     inserer_mots(&p->rail,mot,motHorsParanthese,input,expluse);
+    for (int i=0;i<strlen(expluse);i++) {
+        donnerLettres(&p->joueur[NBJOUEURS-p->joueurActuelle],expluse[i]);
+    }
+    trierMain(&p->joueur[NBJOUEURS-p->joueurActuelle]);
 }
 
 void enleverParentheses(char* mot, char* motVide) {
@@ -106,7 +110,6 @@ void enleverEntreParentheses(char* mot, char* motParanthese) {
     motParanthese[j] = '\0'; // Terminer la chaîne de sortie
 }
 
-void donnerLettre (Partie* p) {}
 
 
 

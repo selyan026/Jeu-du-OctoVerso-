@@ -69,3 +69,10 @@ int verifierMotDansMain(const Vecteur main, const char* mot) {
     }
     return 1;
 }
+
+void donnerLettres(Joueur* j,char expulse) {
+    for (int i = 0; i < j->tailleMain; i++) {
+        ajouterAuVecteur(&j->main,expulse);
+        j->tailleMain++;
+    }
+}
