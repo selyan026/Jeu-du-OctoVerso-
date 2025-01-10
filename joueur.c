@@ -1,6 +1,8 @@
 #include "joueur.h"
 
 #include <stdio.h>
+#include <assert.h>
+#include <string.h>
 
 void remplirJoueur(Joueur* joueur,Pioche* p, const int id) {
     initialiserVecteur(&joueur->main,LETTREJOUEUR);
@@ -21,7 +23,7 @@ void afficherJoueur(const Joueur* joueur) {
     printf("\n");
 }
 
-void trierMain(Joueur *joueur) {
+void trierMain( Joueur* joueur) {
     for (int i = 0; i < joueur->tailleMain - 1; i++) {
         for (int j = 0; j <joueur->tailleMain  - i - 1; j++) {
             if (joueur->main.donnees[j] > joueur->main.donnees[j + 1]) {
@@ -75,4 +77,42 @@ void donnerLettres(Joueur* j,char expulse) {
         ajouterAuVecteur(&j->main,expulse);
         j->tailleMain++;
     }
+}
+
+void testJoueur() {
+        Joueur joueur1;
+        Pioche pioche;
+
+        // Initialisation de la pioche
+        initPioche(&pioche);
+
+        // Test: Remplissage de la main
+        remplirJoueur(&joueur1, &pioche, J1);
+        assert(joueur1.tailleMain == LETTREJOUEUR);
+
+        // Test: Vérification des lettres dans la main
+        char mot[] = "ABC";
+        int peutFormerMot = verifierLettresDansMain(joueur1.main, mot);
+        if (peutFormerMot) {
+            int tailleAvantSuppression = joueur1.tailleMain;
+            supprimerLettre(&joueur1, mot);
+            assert(joueur1.tailleMain == tailleAvantSuppression - (int)strlen(mot));
+        } else {
+            assert(peutFormerMot == 0);
+        }
+
+        // Test: Ajout d'une lettre
+        char lettreAjoutee = 'Z';
+        int tailleAvantAjout = joueur1.tailleMain;
+        donnerLettres(&joueur1, lettreAjoutee);
+        assert(joueur1.tailleMain == tailleAvantAjout + 1);
+
+        // Vérification de la présence de la lettre ajoutée
+        int lettreTrouvee = 0;
+        for (int i = 0; i < joueur1.tailleMain; i++) {
+            lettreTrouvee += (joueur1.main.donnees[i] == lettreAjoutee);
+        }
+        assert(lettreTrouvee > 0);
+        libererVecteur(&joueur1.main);
+
 }

@@ -21,10 +21,9 @@ typedef struct{
  *
  * @param[in] p Adresse de la Pioche qui doit être remplie.
  *
- * @pre
- *      'p != NULL' : Le pointeur de la pioche ne doit pas être nul.
- *      'p->chevalet' doit être correctement initialisé.
- *      'LETTRETOTAL' doit être défini et supérieur à zéro.
+ * @pre 'p != NULL' : Le pointeur de la pioche ne doit pas être nul.
+ * @pre'p->chevalet' doit être correctement initialisé.
+ * @pre'LETTRETOTAL' doit être défini et supérieur à zéro.
  */
 void remplirChevalet(Pioche* p);
 
@@ -33,11 +32,10 @@ void remplirChevalet(Pioche* p);
  *
  * @param[out] p Adresse de la Pioche qui doit être mélangée.
  *
- * @pre
- *      'p != NULL' : Le pointeur de la pioche ne doit pas être nul.
- *      'p->chevalet' doit être initialisé.
- *      'p->nbPioche > 0' : La pioche doit contenir au moins un élément.
- *      Les données dans 'p->chevalet.donnees' doivent être valides.
+ * @pre 'p != NULL' : Le pointeur de la pioche ne doit pas être nul.
+ * @pre 'p->chevalet' doit être initialisé.
+ * @pre 'p->nbPioche > 0' : La pioche doit contenir au moins un élément.
+ * @pre Les données dans 'p->chevalet.donnees' doivent être valides.
  */
 void melangerPioche(Pioche* p);
 
@@ -47,11 +45,10 @@ void melangerPioche(Pioche* p);
  *
  * @param[in] pioche Adresse de la pioche dont on va extraire une lettre.
  *
- * @pre
- *      'pioche != NULL' : Le pointeur de la pioche ne doit pas être nul.
- *      'pioche->chevalet' doit être initialisé.
- *      'pioche->nbPioche > 0' : La pioche ne doit pas être vide.
- *       La fonction `vecteurSupprimerFin` doit être définie et retourner un caractère valide.
+ * @pre 'pioche != NULL' : Le pointeur de la pioche ne doit pas être nul.
+ * @pre 'pioche->chevalet' doit être initialisé.
+ * @pre 'pioche->nbPioche > 0' : La pioche ne doit pas être vide.
+ * @pre  La fonction `vecteurSupprimerFin` doit être définie et retourner un caractère valide.
  *
  * @return Retourne la lettre piochée ou '\0' si la pioche est vide.
  */
@@ -62,9 +59,8 @@ char piocher(Pioche* pioche);
  *
  * @param[in] p Adresse de la Pioche à initialiser.
  *
- * @pre
- *      'p->chevalet' doit être initialisé et prêt à recevoir des éléments.
- *      'LETTRETOTAL' doit être défini et valide.
+ * @pre'p->chevalet' doit être initialisé et prêt à recevoir des éléments.
+ * @pre'LETTRETOTAL' doit être défini et valide.
  *
  * @sa Fonction remplirChevalet et melangerPioche.
  */

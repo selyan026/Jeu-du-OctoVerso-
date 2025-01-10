@@ -1,5 +1,5 @@
 #include "partie.h"
-
+#include <assert.h>
 void initialiserPartie(Partie* p){
     initPioche(&p->pioche);
     initJoueurs(p,&p->pioche);
@@ -120,8 +120,8 @@ void enleverEntreParentheses(char* mot, char* motParanthese) {
 
 void testPartie(){
     testPioche();
-    testRail();
     testVecteur();
+    testRail();
 }
 
 
