@@ -94,7 +94,14 @@ int verifMotRail(Rail* r,char* mot,char* motParanthese,char* input) {
     return trouve;
 }
 
+void inserer_mots(Rail rail, const char* mot, const char* motSansParanthese) {
+    // Vérifier si les mots ne sont pas trop longs pour le rail
+    int len_mot2 = strlen(motSansParanthese);
+    char tmp[9];
 
+
+
+}
 
 
 

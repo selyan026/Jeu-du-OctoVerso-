@@ -20,7 +20,7 @@ void demanderMot(Partie* p,char mot[MAX_MOT]){
     do{
         printf("%d> ",p->joueurActuelle+1);
         scanf("%s",mot);
-    }while(strlen(mot)!=MAX_MOT-1 || !verifierMotDansMain(p->joueur[p->joueurActuelle].main,mot) || !motDansStockage(&p->stockage,mot) || !estDansDictionnaire(mot));
+    }while(strlen(mot)!=MAX_MOT-1 || !motDansStockage(&p->stockage,mot) || !estDansDictionnaire(mot));
 }
 
 void joueurSuivant(Partie* p) {
@@ -51,7 +51,7 @@ void tourDeJeu(Partie* p) {
         enleverParentheses(mot,motVide);
         extraireEntreParentheses(mot,motParanthese);
         enleverEntreParentheses(mot,motHorsParanthese);
-    }while (strlen(motVide)<9 || !verifierMotDansMain(p->joueur[p->joueurActuelle].main,mot) || !motDansStockage(&p->stockage,motVide) || !verifMotRail(&p->rail,mot,motParanthese,input) || !estDansDictionnaire(motVide));
+    }while (strlen(motVide)<9 || !motDansStockage(&p->stockage,motVide) || !verifMotRail(&p->rail,mot,motParanthese,input) || !estDansDictionnaire(motVide));
 }
 
 void enleverParentheses(char* mot, char* motVide) {
@@ -63,7 +63,6 @@ void enleverParentheses(char* mot, char* motVide) {
             motVide[j++] = mot[i];
         }
     }
-
     // Terminer la chaîne de sortie avec le caractère nul
     motVide[j] = '\0';
 }
