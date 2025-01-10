@@ -47,7 +47,7 @@ void trierMain(Joueur* j);
  * @param mot [in] Le mot à vérifier (chaîne de caractères).
  * @return  1 si le mot peut être formé à partir des lettres de la main. 0 si le mot ne peut pas être formé.
  */
-int verifierMotDansMain(const Vecteur main, const char* mot);
+int verifierLettresDansMain(const Vecteur main, const char* mot);
 
 /**
  * @brief Supprime les lettres d'un mot de la main d'un joueur.

@@ -20,7 +20,7 @@ void demanderMot(Partie* p,char mot[MAX_MOT]){
     do{
         printf("%d> ",p->joueurActuelle+1);
         scanf("%s",mot);
-    }while(strlen(mot)!=MAX_MOT-1 || !motDansStockage(&p->stockage,mot) || !estDansDictionnaire(mot));
+    }while(strlen(mot)!=MAX_MOT-1 || !verifierLettresDansMain(p->joueur[p->joueurActuelle].main,mot) || !motDansStockage(&p->stockage,mot) || !estDansDictionnaire(mot));
 }
 
 void joueurSuivant(Partie* p) {
@@ -52,12 +52,16 @@ void tourDeJeu(Partie* p) {
         enleverParentheses(mot,motVide);
         extraireEntreParentheses(mot,motParanthese);
         enleverEntreParentheses(mot,motHorsParanthese);
-    }while (!motDansStockage(&p->stockage,motVide) || !verifMotRail(&p->rail,mot,motParanthese,input) || !estDansDictionnaire(motVide));
+    }while (!motDansStockage(&p->stockage,motVide) || !verifierLettresDansMain(p->joueur[p->joueurActuelle].main,motHorsParanthese) || !verifMotRail(&p->rail,mot,motParanthese,input) || !estDansDictionnaire(motVide));
     inserer_mots(&p->rail,mot,motHorsParanthese,input,expluse);
     for (int i=0;i<strlen(expluse);i++) {
         donnerLettres(&p->joueur[NBJOUEURS-p->joueurActuelle],expluse[i]);
     }
+    supprimerLettre(&p->joueur[p->joueurActuelle],motHorsParanthese);
     trierMain(&p->joueur[NBJOUEURS-p->joueurActuelle]);
+    trierMain(&p->joueur[p->joueurActuelle]);
+    afficherJoueur(&p->joueur[J1]);
+    afficherJoueur(&p->joueur[J2]);
 }
 
 void enleverParentheses(char* mot, char* motVide) {

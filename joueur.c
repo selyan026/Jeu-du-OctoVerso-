@@ -46,7 +46,7 @@ void supprimerLettre (Joueur *joueur,const char *mot) {
     trierMain(joueur);
 }
 
-int verifierMotDansMain(const Vecteur main, const char* mot) {
+int verifierLettresDansMain(const Vecteur main, const char* mot) {
     Vecteur copieMain;
     initialiserVecteur(&copieMain,main.taille);
     copieMain.taille=main.taille;
