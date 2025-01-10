@@ -42,7 +42,7 @@ void initRail(Rail* r, const char* mot1, const char* mot2);
  * @pre 'rail->tailleRail' doit être correcte et ne pas dépasser 'TAILLE_RAIL - 1'.
  * @pre Les champs 'recto' et 'verso' de 'rail' doivent être correctement initialisés.
  */
-void afficherRail(Rail* rail);
+void afficherRail(const Rail* rail);
 
 
 /**

@@ -65,9 +65,46 @@ void joueurSuivant(Partie* p);
 */
 void savoirQuiJoue(Partie* p,const char* mot1,const char* mot2);
 
-void testPartie();
+/**
+ * @brief Gère un tour de jeu pour le joueur actuel, permettant l'insertion d'un mot sur le rail.
+ *
+ * @param[in, out] p Pointeur vers la structure de la partie en cours.
+ *
+ * @pre 'p' doit être une structure Partie initialisée avec des joueurs, une pioche et un rail.
+ * @post Le rail est mis à jour, les mains des joueurs sont modifiées et triées.
+ */
 void tourDeJeu(Partie* p);
+
+/**
+ * @brief Supprime toutes les parenthèses dans une chaîne de caractères.
+ *
+ * @param[in] mot Chaîne d'entrée contenant éventuellement des parenthèses.
+ * @param[out] motVide Chaîne de sortie où les parenthèses sont retirées.
+ *
+ * @pre 'mot' doit être une chaîne de caractères valide et null-terminée.
+ * @post 'motVide' contient une version de `mot` sans parenthèses.
+ */
 void enleverParentheses(char* mot, char* motVide);
+
+/**
+ * @brief Extrait le contenu entre les parenthèses d'une chaîne de caractères.
+ *
+ * @param[in] mot Chaîne d'entrée contenant des parenthèses.
+ * @param[out] motParanthese Chaîne de sortie contenant uniquement le texte
+ * situé entre les parenthèses.
+ *
+ * @pre `mot` doit être une chaîne de caractères valide et null-terminée.
+ */
 void extraireEntreParentheses(const char* mot, char* motParanthese);
+
+/**
+ * @brief Supprime le contenu situé entre les parenthèses d'une chaîne de caractères.
+ *
+ * @param[in] mot Chaîne d'entrée contenant des parenthèses.
+ * @param[out] motParanthese Chaîne de sortie où le contenu entre parenthèses est retiré.
+ *
+ * @pre `mot` doit être une chaîne de caractères valide et null-terminée.
+ */
 void enleverEntreParentheses(char* mot, char* motParanthese);
+void testPartie();
 #endif //PARTIE_H

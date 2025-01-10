@@ -172,10 +172,13 @@ void inserer_mots(Rail* r, const char* mot, const char* motHorsParanthese, const
 
 void testRail() {
     Rail rail;
+    char expulse[TAILLE_RAIL];
+    char motParanthese[5];
+    char input[2];
 
     // Test de initRail avec deux mots de 4 lettres
     initRail(&rail, "CHAT", "LION");
-    assert(rail.tailleRail == TAILLE_RAIL -1);
+    assert(rail.tailleRail == TAILLE_RAIL - 1);
     assert(strcmp(rail.recto, "CHATLION") == 0);
     assert(strcmp(rail.verso, "NOILTAHC") == 0);
 
@@ -189,4 +192,30 @@ void testRail() {
     rail.tailleRail = TAILLE_RAIL - 1;
     retournerRailVerso(&rail);
     assert(strcmp(rail.verso, "ESACTSET") == 0); // Verso doit être "ESACTSET"
+
+    // Test de inserer_mots : Ajout d'un mot sans parenthèses dans le recto
+    strcpy(input, "R");
+    inserer_mots(&rail, "CHAT", "CHAT", input, expulse);
+    assert(strcmp(rail.recto, "ESTSECHA") == 0);
+    assert(strcmp(expulse, "TEST") == 0); // Les lettres "TEST" ont été expulsées
+
+    // Test de inserer_mots : Ajout d'un mot avec parenthèses dans le verso
+    strcpy(input, "V");
+    inserer_mots(&rail, "(CHAT)", "CHAT", input, expulse);
+    assert(strcmp(rail.verso, "SETCHAES") == 0);
+    assert(strcmp(expulse, "TEST") == 0); // Les lettres "TEST" ont été expulsées
+
+    // Test de verifMotRail : Vérification au début du recto
+    strcpy(motParanthese, "CHA");
+    assert(verifMotRail(&rail, "CHAT", motParanthese, "R") == 1);
+
+    // Test de verifMotRail : Vérification à la fin du verso
+    strcpy(motParanthese, "ES");
+    assert(verifMotRail(&rail, "(CHAT)", motParanthese, "V") == 1);
+
+    // Test de verifMotRail : Vérification d'un mot non présent
+    strcpy(motParanthese, "DOG");
+    assert(verifMotRail(&rail, "DOG", motParanthese, "R") == 0);
+
+    printf("Tous les tests pour Rail ont réussi !\n");
 }
