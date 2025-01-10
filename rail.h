@@ -63,4 +63,7 @@ void retournerRail(Rail* r);
  * @pre 'recto' et 'verso' de la structure 'Rail'.
  * */
 void testRail();
+
+int verifMotRailVerso(Rail* r,char* mot,char* motParanthese);
+int verifMotRailRecto(Rail* r,char* mot,char* motParanthese);
 #endif //RAIL_H

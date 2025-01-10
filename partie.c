@@ -13,6 +13,7 @@ void initJoueurs(Partie* p,Pioche* v) {
     for (int i=0;i<NBJOUEURS;i++) {
         afficherJoueur(&p->joueur[i]);
     }
+    printf("\n");
 }
 
 void demanderMot(Partie* p,char mot[MAX_MOT]){
@@ -49,7 +50,7 @@ void tourDeJeu(Partie* p) {
             scanf("%s",&mot);
             enleverParentheses(mot,motVide);
             extraireEntreParentheses(mot,motParanthese);
-        }while (strlen(motVide)<9 || !motDansStockage(&p->stockage,motVide) || !estDansDictionnaire(motVide));
+        }while (strlen(motVide)<9 || !motDansStockage(&p->stockage,motVide) || !verifMotRailVerso(&p->rail,mot,motParanthese) || !estDansDictionnaire(motVide));
 
     }
     if (input[0]=='R') {
@@ -57,7 +58,7 @@ void tourDeJeu(Partie* p) {
             scanf("%s",&mot);
             enleverParentheses(mot,motVide);
             extraireEntreParentheses(mot,motParanthese);
-        }while (strlen(motVide)<9 || !motDansStockage(&p->stockage,motVide) || !estDansDictionnaire(motVide));
+        }while (strlen(motVide)<9 || !motDansStockage(&p->stockage,motVide) || !verifMotRailRecto(&p->rail,mot,motParanthese) || !estDansDictionnaire(motVide));
     }
 }
 

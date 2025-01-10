@@ -37,6 +37,71 @@ void retournerRail(Rail* r){
     r->verso[r->tailleRail]='\0';
 }
 
+int verifMotRailVerso(Rail* r,char* mot,char* motParanthese) {
+    int trouve=0;
+    if (&mot[0]=="(") {
+        for (int i=r->tailleRail-1,j=strlen(mot)-1; j>=0; i--,j--) {
+            if (r->verso[i]==motParanthese[j]) {
+                trouve=1;
+            }
+            else {
+                trouve=0;
+                break;
+            }
+        }
+    }
+    else {
+        for (int i=0; i<strlen(motParanthese); i++) {
+            if (r->verso[i]==motParanthese[i]) {
+                trouve=1;
+            }
+            else {
+                trouve=0;
+                break;
+            }
+
+        }
+    }
+    return trouve;
+
+}
+
+int verifMotRailRecto(Rail* r,char* mot,char* motParanthese) {
+    int trouve=0;
+    if (&mot[0]=="(") {
+        for (int i=r->tailleRail-1,j=strlen(mot)-1; j>=0; i--,j--) {
+            if (r->recto[i]==motParanthese[j]) {
+                trouve=1;
+            }
+            else {
+                trouve=0;
+                break;
+            }
+        }
+    }
+    else {
+        for (int i=0; i<strlen(motParanthese); i++) {
+            if (r->verso[i]==motParanthese[i]) {
+                trouve=1;
+            }
+            else {
+                trouve=0;
+                break;
+            }
+
+        }
+    }
+    return trouve;
+
+}
+
+
+
+
+
+
+
+
 void testRail() {
     Rail rail;
 
