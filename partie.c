@@ -39,9 +39,9 @@ void savoirQuiJoue(Partie* p,const char* mot1,const char* mot2) {
 
 void tourDeJeu(Partie* p) {
     char input[1];
-    char* mot[11];
+    char mot[11];
     char motParanthese[8];
-    char* motVide[9];
+    char motVide[9];
     printf("%d> ",p->joueurActuelle+1);
     scanf("%s",input);
     if (input[0]=='V') {
@@ -61,7 +61,7 @@ void tourDeJeu(Partie* p) {
     }
 }
 
-void enleverParentheses(const char* mot, char* motVide) {
+void enleverParentheses(char* mot, char* motVide) {
     int j = 0; // Index pour la chaîne de sortie
 
     for (int i = 0; mot[i] != '\0'; i++) {
