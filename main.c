@@ -18,7 +18,7 @@ int main(){
     afficherRail(&p.rail);
     afficherJoueur(&p.joueur[J1]);
     afficherJoueur(&p.joueur[J2]);
+    savoirQuiJoue(&p,mot1,mot2);
     tourDeJeu(&p);
-
     return 0;
 }

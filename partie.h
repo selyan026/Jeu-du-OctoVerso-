@@ -69,4 +69,5 @@ void testPartie();
 void tourDeJeu(Partie* p);
 void enleverParentheses(char* mot, char* motVide);
 void extraireEntreParentheses(const char* mot, char* motParanthese);
+void enleverEntreParentheses(char* mot, char* motParanthese);
 #endif //PARTIE_H

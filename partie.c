@@ -39,27 +39,19 @@ void savoirQuiJoue(Partie* p,const char* mot1,const char* mot2) {
 }
 
 void tourDeJeu(Partie* p) {
-    char input[1];
+    char input[2];
     char mot[11];
     char motParanthese[8];
     char motVide[9];
-    printf("%d> ",p->joueurActuelle+1);
-    scanf("%s",input);
-    if (input[0]=='V') {
-        do {
-            scanf("%s",&mot);
-            enleverParentheses(mot,motVide);
-            extraireEntreParentheses(mot,motParanthese);
-        }while (strlen(motVide)<9 || !motDansStockage(&p->stockage,motVide) || !verifMotRailVerso(&p->rail,mot,motParanthese) || !estDansDictionnaire(motVide));
-
-    }
-    if (input[0]=='R') {
-        do {
-            scanf("%s",&mot);
-            enleverParentheses(mot,motVide);
-            extraireEntreParentheses(mot,motParanthese);
-        }while (strlen(motVide)<9 || !motDansStockage(&p->stockage,motVide) || !verifMotRailRecto(&p->rail,mot,motParanthese) || !estDansDictionnaire(motVide));
-    }
+    char motHorsParanthese[10];
+    do {
+        printf("%d> ",p->joueurActuelle+1);
+        scanf("%s",input);
+        scanf("%s",&mot);
+        enleverParentheses(mot,motVide);
+        extraireEntreParentheses(mot,motParanthese);
+        enleverEntreParentheses(mot,motHorsParanthese);
+    }while (strlen(motVide)<9 || !verifierMotDansMain(p->joueur[p->joueurActuelle].main,mot) || !motDansStockage(&p->stockage,motVide) || !verifMotRail(&p->rail,mot,motParanthese,input) || !estDansDictionnaire(motVide));
 }
 
 void enleverParentheses(char* mot, char* motVide) {
@@ -96,6 +88,25 @@ void extraireEntreParentheses(const char* mot, char* motParanthese) {
     // Terminer la chaîne de sortie avec le caractère nul
     motParanthese[j] = '\0';
 }
+
+void enleverEntreParentheses(char* mot, char* motParanthese) {
+    int inParentheses = 0; // Flag pour indiquer si on est dans une parenthèse
+    int j = 0; // Index pour remplir la chaîne de sortie
+
+    for (int i = 0; mot[i] != '\0'; i++) {
+        if (mot[i] == '(') {
+            inParentheses = 1; // On entre dans une parenthèse
+        } else if (mot[i] == ')') {
+            inParentheses = 0; // On sort de la parenthèse
+        } else if (!inParentheses) {
+            motParanthese[j++] = mot[i]; // Copier les caractères hors parenthèses
+        }
+    }
+    motParanthese[j] = '\0'; // Terminer la chaîne de sortie
+}
+
+
+
 
 void testPartie(){
     testPioche();
