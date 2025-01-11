@@ -6,7 +6,6 @@ int main(){
     Partie p;
     initialiserStockage(&p.stockage,1);
     initialiserPartie(&p);
-    testPartie();
     demanderMot(&p,mot1);
     ajouterMotStockage(&p.stockage,mot1);
     supprimerLettre(&p.joueur[p.joueurActuelle],mot1);

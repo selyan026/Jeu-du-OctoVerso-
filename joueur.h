@@ -89,7 +89,7 @@ void supprimerLettre(Joueur *joueur, const char *mot);
  *
  * @pre Le pointeur 'j' doit être non nul et la main du joueur doit être initialisée.
  */
-void donnerLettres(Joueur* j,char expulse);
+void donnerLettres(Joueur* j,char* expulse);
 
 
 /**
