@@ -74,7 +74,15 @@ int verifierLettresDansMain(const Vecteur main, const char* mot) {
 
 void donnerLettres(Joueur* j,char* expulse) {
     for (int i = 0; expulse[i] != '\0'; i++) {
+        if (j->tailleMain<j->main.capacite){
             j->main.donnees[j->tailleMain++] = expulse[i];
+            j->main.taille++;
+        }
+        else {
+            ajouterAuVecteur(&j->main,expulse[i]);
+            j->main.taille++;
+        }
+
     }
 }
 
