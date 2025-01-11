@@ -55,9 +55,14 @@ void tourDeJeu(Partie* p) {
     }while (!motDansStockage(&p->stockage,motVide) || !verifierLettresDansMain(p->joueur[p->joueurActuelle].main,motHorsParanthese) || !verifMotRail(&p->rail,mot,motParanthese,input) || !estDansDictionnaire(motVide));
     inserer_mots(&p->rail,mot,motHorsParanthese,input,expluse);
     expluse[strlen(motHorsParanthese)]='\0';
-    donnerLettres(&p->joueur[NBJOUEURS-p->joueurActuelle],expluse);
+    ajouterMotStockage(&p->stockage,motVide);
+    joueurSuivant(p);
+    donnerLettres(&p->joueur[p->joueurActuelle],expluse);
+    joueurSuivant(p);
     supprimerLettre(&p->joueur[p->joueurActuelle],motHorsParanthese);
-    trierMain(&p->joueur[NBJOUEURS-p->joueurActuelle]);
+    joueurSuivant(p);
+    trierMain(&p->joueur[p->joueurActuelle]);
+    joueurSuivant(p);
     trierMain(&p->joueur[p->joueurActuelle]);
     afficherJoueur(&p->joueur[J1]);
     afficherJoueur(&p->joueur[J2]);
