@@ -18,12 +18,12 @@ void initRail(Rail* r,const char* mot1,const char* mot2) {
 }
 
 void afficherRail(const Rail* rail) {
-    printf("r> ");
+    printf("R : ");
     for (int i=0;i< rail->tailleRail;++i) {
         printf("%c",rail->recto[i]);
     }
     printf("\n");
-    printf("v> ");
+    printf("V : ");
     for (int i=0;i< rail->tailleRail;++i) {
         printf("%c",rail->verso[i]);
     }

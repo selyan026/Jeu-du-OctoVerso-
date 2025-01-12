@@ -53,6 +53,7 @@ void tourDeJeu(Partie* p) {
         extraireEntreParentheses(mot,motParanthese);
         enleverEntreParentheses(mot,motHorsParanthese);
     }while (!verifTailleMot(motVide,motParanthese) || !motDansStockage(&p->stockage,motVide) || !verifierLettresDansMain(p->joueur[p->joueurActuelle].main,motHorsParanthese) || !verifMotRail(&p->rail,mot,motParanthese,input) || !estDansDictionnaire(motVide));
+    printf("\n");
     inserer_mots(&p->rail,mot,motHorsParanthese,input,expluse);
     expluse[strlen(motHorsParanthese)]='\0';
     ajouterMotStockage(&p->stockage,motVide);
@@ -64,8 +65,11 @@ void tourDeJeu(Partie* p) {
     trierMain(&p->joueur[p->joueurActuelle]);
     joueurSuivant(p);
     trierMain(&p->joueur[p->joueurActuelle]);
+    printf("\n");
     afficherJoueur(&p->joueur[J1]);
     afficherJoueur(&p->joueur[J2]);
+    afficherRail(&p->rail);
+    printf("\n");
 }
 
 void enleverParentheses(char* mot, char* motVide) {
