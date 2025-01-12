@@ -109,16 +109,18 @@ void enleverParentheses(char* mot, char* motVide);
 void extraireEntreParentheses(const char* mot, char* motParanthese);
 
 /**
- * @brief Garde le contenu situé entre les parenthèses d'une chaîne de caractères.
+ * @brief Supprime le contenu situé entre les parenthèses d'une chaîne de caractères.
  *
  * @param[in] mot Chaîne d'entrée contenant des parenthèses.
- * @param[out] motParanthese Chaîne de sortie où le contenu entre parenthèses est contenue.
+ * @param[out] motParanthese Chaîne de sortie où le contenu entre parenthèses est supprimer.
  *
  * @pre 'mot' doit être une chaîne de caractères valide et null-terminée contenant des paranthèses)
  */
 void enleverEntreParentheses(char* mot, char* motParanthese);
 
 int verifTailleMot(char* motVide,char* motParanthese);
+
+void jouerUnePartie();
 
 void testPartie();
 #endif //PARTIE_H
