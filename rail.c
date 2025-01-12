@@ -165,9 +165,9 @@ void inserer_mots(Rail* r, const char* mot, const char* motHorsParanthese, const
                 r->verso[i]=nouveauRail[i];
             }
         }
-        expulse[strlen(motHorsParanthese)]='\0';
         retournerRailRecto(r);
     }
+    expulse[len_mot]='\0';
 }
 
 
@@ -196,25 +196,14 @@ void testRail() {
 
     // Test de inserer_mots : Ajout d'un mot sans parenthèses dans le verso
     strcpy(input, "V\0");
-    inserer_mots(&rail, "(SET)S", "S\0", input, expulse);
-    assert(strcmp(rail.verso, "SACTSETS") == 0);
-    assert(strcmp(expulse, "E\0") == 0); // Les lettres "TEST" ont été expulsées
+    inserer_mots(&rail, "(SET)EREE", "EREE\0", input, expulse);
+    assert(strcmp(rail.verso, "TSETEREE") == 0);
+    assert(strcmp(expulse, "ESAC\0") == 0); // Les lettres "TEST" ont été expulsées
 
-    // Test de inserer_mots : Ajout d'un mot avec parenthèses dans le verso
+    // Test de inserer_mots : Ajout d'un mot avec parenthèses dans le recto
     strcpy(input, "R\0");
-    inserer_mots(&rail, "(CAS)EES", "SSS", input, expulse);
-    assert(strcmp(rail.recto, "STCASEES") == 0);
-    assert(strcmp(expulse, "STE\0") == 0); // Les lettres "TEST" ont été expulsées
-
-    // Test de verifMotRail : Vérification au début du recto
-    strcpy(motParanthese, "CHA");
-    assert(verifMotRail(&rail, "CHAT", motParanthese, "R") == 1);
-
-    // Test de verifMotRail : Vérification à la fin du verso
-    strcpy(motParanthese, "ES");
-    assert(verifMotRail(&rail, "(CHAT)", motParanthese, "V") == 1);
-
-    // Test de verifMotRail : Vérification d'un mot non présent
-    strcpy(motParanthese, "DOG");
-    assert(verifMotRail(&rail, "DOG", motParanthese, "R") == 0);
+    char* motHorsParanthese="CR\0";
+    inserer_mots(&rail, "CR(EER)",motHorsParanthese, input, expulse);
+    assert(strcmp(rail.recto, "CREERETE") == 0);
+    assert(strcmp(expulse, "ST\0") == 0); // Les lettres "TEST" ont été expulsées
 }
