@@ -134,5 +134,9 @@ int verifTailleMot(char* motVide,char* motParanthese);
 */
 void jouerUnePartie();
 
+/**
+ * @brief Effectue les tests unitaires pour les composants principaux de la partie.*
+ * @pre Les fonctions testJoueur, testPioche, testVecteur et testRail doivent être correctement implémentées.
+**/
 void testPartie();
 #endif //PARTIE_H
