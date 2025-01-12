@@ -40,14 +40,12 @@ void melangerPioche(Pioche* p) {
 }
 
 char piocher(Pioche* pioche) {
-    // Vérifie s'il reste des éléments dans la pioche
     if (pioche->nbPioche > 0) {
-        // Supprime une lettre à la fin du vecteur et décrémente nbPioche
         char lettre = vecteurSupprimerFin(&pioche->chevalet);
-        pioche->nbPioche--;  // Réduit le nombre de pioches disponibles
+        pioche->nbPioche--;
         return lettre;
     } else {
-        return '\0';  // Si la pioche est vide, retourne '\0'
+        return '\0';
     }
 }
 
@@ -59,17 +57,9 @@ void initPioche(Pioche* p) {
 void testPioche() {
     Pioche p;
     initPioche(&p);
-
-    // Vérifie si la pioche a été correctement remplie avec le bon nombre d'éléments
     assert(p.nbPioche == LETTRETOTAL);
-
-    // Sauvegarde de la première lettre avant mélange
     Vecteur chevaletAvantMelange = p.chevalet;
-
-    // Mélange la pioche
     melangerPioche(&p);
-
-    // Vérifie que le mélange a modifié au moins un élément dans le vecteur
     int changement = 0;
     for (int i = 0; i < LETTRETOTAL; i++) {
         if (chevaletAvantMelange.donnees[i] != p.chevalet.donnees[i]) {
@@ -77,18 +67,14 @@ void testPioche() {
             break;
         }
     }
-
-    // Teste la pioche d'une lettre
     char lettrePiochee = piocher(&p);
-    assert(lettrePiochee != '\0');  // Vérifie qu'une lettre valide a été piochée
-    assert(p.nbPioche == LETTRETOTAL - 1);  // Vérifie que le nombre de pioches a diminué de 1
-
-    // Teste la pioche quand la pioche est vide
+    assert(lettrePiochee != '\0');
+    assert(p.nbPioche == LETTRETOTAL - 1);
     Pioche vide;
     initPioche(&vide);
     while (vide.nbPioche > 0) {
-        piocher(&vide);  // Vide la pioche
+        piocher(&vide);
     }
-    assert(piocher(&vide) == '\0');  // Vérifie qu'une pioche vide retourne '\0'
+    assert(piocher(&vide) == '\0');
 }
 

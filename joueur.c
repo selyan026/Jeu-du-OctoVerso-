@@ -87,39 +87,30 @@ void donnerLettres(Joueur* j,char* expulse) {
 }
 
 void testJoueur() {
-        Joueur joueur1;
-        Pioche pioche;
-
-        // Initialisation de la pioche
-        initPioche(&pioche);
-
-        // Test: Remplissage de la main
-        remplirJoueur(&joueur1, &pioche, J1);
-        assert(joueur1.tailleMain == LETTREJOUEUR);
-
-        // Test: Vérification des lettres dans la main
-        char mot[] = "ABC";
-        int peutFormerMot = verifierLettresDansMain(joueur1.main, mot);
-        if (peutFormerMot) {
-            int tailleAvantSuppression = joueur1.tailleMain;
-            supprimerLettre(&joueur1, mot);
-            assert(joueur1.tailleMain == tailleAvantSuppression - (int)strlen(mot));
-        } else {
-            assert(peutFormerMot == 0);
-        }
-
-        // Test: Ajout d'une lettre
-        char lettreAjoutee = 'Z';
+    Joueur joueur1;
+    Pioche pioche;
+    initPioche(&pioche);
+    remplirJoueur(&joueur1, &pioche, J1);
+    assert(joueur1.tailleMain == LETTREJOUEUR);
+    char mot[] = "ABC";
+    int peutFormerMot = verifierLettresDansMain(joueur1.main, mot);
+    if (peutFormerMot) {
+        int tailleAvantSuppression = joueur1.tailleMain;
+        supprimerLettre(&joueur1, mot);
+        assert(joueur1.tailleMain == tailleAvantSuppression - (int)strlen(mot));
+    } else {
+        assert(peutFormerMot == 0);
+    }
+    char lettreAjoutee[2]= "A\0";
         int tailleAvantAjout = joueur1.tailleMain;
-        donnerLettres(&joueur1, lettreAjoutee);
+        donnerLettres(&joueur1,lettreAjoutee);
         assert(joueur1.tailleMain == tailleAvantAjout + 1);
-
-        // Vérification de la présence de la lettre ajoutée
         int lettreTrouvee = 0;
         for (int i = 0; i < joueur1.tailleMain; i++) {
-            lettreTrouvee += (joueur1.main.donnees[i] == lettreAjoutee);
+            if (joueur1.main.donnees[i] == 'A') {
+                lettreTrouvee=1;
+            }
         }
         assert(lettreTrouvee > 0);
         libererVecteur(&joueur1.main);
-
 }

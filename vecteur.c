@@ -91,7 +91,7 @@ void testVecteur() {
     for (int i = 0; i < 5; i++) {
         assert(ajouterAuVecteur(&v, 'X') == 1);
     }
-    assert(v.capacite > 5); // Vérification que la capacité a augmenté
+    assert(v.capacite > 5);
 
     // Libération de la mémoire
     libererVecteur(&v);

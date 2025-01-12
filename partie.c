@@ -70,56 +70,51 @@ void tourDeJeu(Partie* p) {
     afficherJoueur(&p->joueur[J2]);
     afficherRail(&p->rail);
     printf("\n");
+    joueurSuivant(p);
 }
 
 void enleverParentheses(char* mot, char* motVide) {
-    int j = 0; // Index pour la chaîne de sortie
+    int j = 0;
 
     for (int i = 0; mot[i] != '\0'; i++) {
-        // Si le caractère n'est pas une parenthèse ouvrante ou fermante, on l'ajoute à la sortie
         if (mot[i] != '(' && mot[i] != ')') {
             motVide[j++] = mot[i];
         }
     }
-    // Terminer la chaîne de sortie avec le caractère nul
     motVide[j] = '\0';
 }
 
 void extraireEntreParentheses(const char* mot, char* motParanthese) {
-    int j = 0; // Index pour la chaîne de sortie
-    int dansParentheses = 0; // Indicateur si on est entre parenthèses
+    int j = 0;
+    int dansParentheses = 0;
 
     for (int i = 0; mot[i] != '\0'; i++) {
         if (mot[i] == '(') {
-            // On rencontre une parenthèse ouvrante : on active l'indicateur
             dansParentheses = 1;
         } else if (mot[i] == ')') {
-            // On rencontre une parenthèse fermante : on désactive l'indicateur
             dansParentheses = 0;
         } else if (dansParentheses) {
-            // Si on est entre parenthèses, on copie le caractère dans la sortie
             motParanthese[j++] = mot[i];
         }
     }
 
-    // Terminer la chaîne de sortie avec le caractère nul
     motParanthese[j] = '\0';
 }
 
 void enleverEntreParentheses(char* mot, char* motParanthese) {
-    int inParentheses = 0; // Flag pour indiquer si on est dans une parenthèse
-    int j = 0; // Index pour remplir la chaîne de sortie
+    int inParentheses = 0;
+    int j = 0;
 
     for (int i = 0; mot[i] != '\0'; i++) {
         if (mot[i] == '(') {
-            inParentheses = 1; // On entre dans une parenthèse
+            inParentheses = 1;
         } else if (mot[i] == ')') {
-            inParentheses = 0; // On sort de la parenthèse
+            inParentheses = 0;
         } else if (!inParentheses) {
-            motParanthese[j++] = mot[i]; // Copier les caractères hors parenthèses
+            motParanthese[j++] = mot[i];
         }
     }
-    motParanthese[j] = '\0'; // Terminer la chaîne de sortie
+    motParanthese[j] = '\0';
 }
 
 int verifTailleMot(char* motVide,char* motParanthese) {
@@ -135,6 +130,7 @@ int verifTailleMot(char* motVide,char* motParanthese) {
 
 
 void testPartie(){
+    testJoueur();
     testPioche();
     testVecteur();
     testRail();

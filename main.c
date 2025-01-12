@@ -6,6 +6,7 @@ int main(){
     Partie p;
     initialiserStockage(&p.stockage,1);
     initialiserPartie(&p);
+    testPartie();
     demanderMot(&p,mot1);
     ajouterMotStockage(&p.stockage,mot1);
     supprimerLettre(&p.joueur[p.joueurActuelle],mot1);
@@ -22,6 +23,6 @@ int main(){
     savoirQuiJoue(&p,mot1,mot2);
     do {
         tourDeJeu(&p);
-    }while (p.joueur[J1].tailleMain!=0 || p.joueur[J2].tailleMain!=0);
+    }while (p.joueur[J1].tailleMain!=0 && p.joueur[J2].tailleMain!=0);
     return 0;
 }
