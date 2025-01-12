@@ -52,7 +52,7 @@ void tourDeJeu(Partie* p) {
         enleverParentheses(mot,motVide);
         extraireEntreParentheses(mot,motParanthese);
         enleverEntreParentheses(mot,motHorsParanthese);
-    }while (!motDansStockage(&p->stockage,motVide) || !verifierLettresDansMain(p->joueur[p->joueurActuelle].main,motHorsParanthese) || !verifMotRail(&p->rail,mot,motParanthese,input) || !estDansDictionnaire(motVide));
+    }while (!motDansStockage(&p->stockage,motVide) || !verifierLettresDansMain(p->joueur[p->joueurActuelle].main,motHorsParanthese) || !verifMotRail(&p->rail,mot,motParanthese,input));
     inserer_mots(&p->rail,mot,motHorsParanthese,input,expluse);
     expluse[strlen(motHorsParanthese)]='\0';
     ajouterMotStockage(&p->stockage,motVide);

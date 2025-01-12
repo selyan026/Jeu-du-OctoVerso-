@@ -80,7 +80,7 @@ void donnerLettres(Joueur* j,char* expulse) {
         }
         else {
             ajouterAuVecteur(&j->main,expulse[i]);
-            j->main.taille++;
+            j->tailleMain++;
         }
 
     }
