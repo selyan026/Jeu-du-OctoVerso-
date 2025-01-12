@@ -110,16 +110,28 @@ void extraireEntreParentheses(const char* mot, char* motParanthese);
 
 /**
  * @brief Supprime le contenu situé entre les parenthèses d'une chaîne de caractères.
- *
  * @param[in] mot Chaîne d'entrée contenant des parenthèses.
  * @param[out] motParanthese Chaîne de sortie où le contenu entre parenthèses est supprimer.
- *
  * @pre 'mot' doit être une chaîne de caractères valide et null-terminée contenant des paranthèses)
  */
 void enleverEntreParentheses(char* mot, char* motParanthese);
 
+/**
+ * @brief Vérifie si les tailles des mots donnés respectent les limites spécifiées.*
+ * @param motVide [in] Chaîne de caractères représentant le mot sans parenthèses.
+ * @param motParanthese [in] Chaîne de caractères représentant le contenu entre parenthèses.*
+ * @return 1 si les tailles respectent les contraintes, 0 sinon.*
+ * @pre Les chaînes 'motVide' et 'motParanthese' doivent être null-terminées.
+ * @pre Les constantes 'TAILLE_MOT_VIDE' et 'TAILLE_INPUT' doivent être définies.
+*/
 int verifTailleMot(char* motVide,char* motParanthese);
 
+/**
+ * @brief Gère le déroulement complet d'une partie, de l'initialisation au tour de jeu jusqu'à la fin.*
+ * @pre Les constantes 'MAX_MOT', 'J1', et 'J2' doivent être définies.
+ * @pre Les fonctions associées à la structure 'Partie' (comme 'initialiserPartie',
+ * 'demanderMot', etc.) doivent être correctement implémentées.
+*/
 void jouerUnePartie();
 
 void testPartie();
