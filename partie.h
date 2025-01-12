@@ -11,7 +11,7 @@
 #include <string.h>
 #include <stdio.h>
 
-enum {NBJOUEURS=2,MAX_MOT=5};// Nombre de joueurs qui jouent
+enum {NBJOUEURS=2,MAX_MOT=5,TAILLE_INPUT=2,TAILLE_MOT=11,TAILLE_MOT_VIDE=8};// Nombre de joueurs qui jouent
 /* *
 * Représente une partie (i.e ses joueurs, son recto, sa pioche, le joueurActuelle).
 */
@@ -109,15 +109,16 @@ void enleverParentheses(char* mot, char* motVide);
 void extraireEntreParentheses(const char* mot, char* motParanthese);
 
 /**
- * @brief Supprime le contenu situé entre les parenthèses d'une chaîne de caractères.
+ * @brief Garde le contenu situé entre les parenthèses d'une chaîne de caractères.
  *
  * @param[in] mot Chaîne d'entrée contenant des parenthèses.
- * @param[out] motParanthese Chaîne de sortie où le contenu entre parenthèses est retiré.
+ * @param[out] motParanthese Chaîne de sortie où le contenu entre parenthèses est contenue.
  *
- * @pre 'mot' doit être une chaîne de caractères valide et null-terminée.
+ * @pre 'mot' doit être une chaîne de caractères valide et null-terminée contenant des paranthèses)
  */
 void enleverEntreParentheses(char* mot, char* motParanthese);
 
+int verifTailleMot(char* motVide,char* motParanthese);
 
 void testPartie();
 #endif //PARTIE_H

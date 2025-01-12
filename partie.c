@@ -39,12 +39,12 @@ void savoirQuiJoue(Partie* p,const char* mot1,const char* mot2) {
 }
 
 void tourDeJeu(Partie* p) {
-    char input[2];
-    char mot[11];
-    char motParanthese[8];
-    char motVide[9];
-    char motHorsParanthese[10];
-    char expluse[8];
+    char input[TAILLE_INPUT];
+    char mot[TAILLE_MOT];
+    char motParanthese[TAILLE_MOT_VIDE];
+    char motVide[TAILLE_MOT_VIDE+1];
+    char motHorsParanthese[TAILLE_MOT_VIDE-1];
+    char expluse[TAILLE_MOT_VIDE-1];
     do {
         printf("%d> ",p->joueurActuelle+1);
         scanf("%s",input);
@@ -52,7 +52,7 @@ void tourDeJeu(Partie* p) {
         enleverParentheses(mot,motVide);
         extraireEntreParentheses(mot,motParanthese);
         enleverEntreParentheses(mot,motHorsParanthese);
-    }while (!motDansStockage(&p->stockage,motVide) || !verifierLettresDansMain(p->joueur[p->joueurActuelle].main,motHorsParanthese) || !verifMotRail(&p->rail,mot,motParanthese,input) || !estDansDictionnaire(motVide));
+    }while (!verifTailleMot(motVide,motParanthese) || !motDansStockage(&p->stockage,motVide) || !verifierLettresDansMain(p->joueur[p->joueurActuelle].main,motHorsParanthese) || !verifMotRail(&p->rail,mot,motParanthese,input) || !estDansDictionnaire(motVide));
     inserer_mots(&p->rail,mot,motHorsParanthese,input,expluse);
     expluse[strlen(motHorsParanthese)]='\0';
     ajouterMotStockage(&p->stockage,motVide);
@@ -116,6 +116,14 @@ void enleverEntreParentheses(char* mot, char* motParanthese) {
         }
     }
     motParanthese[j] = '\0'; // Terminer la chaîne de sortie
+}
+
+int verifTailleMot(char* motVide,char* motParanthese) {
+    if (strlen(motVide)>TAILLE_MOT_VIDE)
+        return 0;
+    if (strlen(motParanthese)<TAILLE_INPUT)
+        return 0;
+    return 1;
 }
 
 
