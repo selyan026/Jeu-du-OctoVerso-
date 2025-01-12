@@ -177,7 +177,7 @@ void testRail() {
     char motParanthese[5];
     char input[2];
 
-    // Test de initRail avec deux mots de 4 lettres
+
     initRail(&rail, "CHAT", "LION");
     assert(rail.tailleRail == TAILLE_RAIL - 1);
     assert(strcmp(rail.recto, "CHATLION") == 0);
@@ -189,21 +189,21 @@ void testRail() {
     assert(strcmp(rail.verso, "NOILTAHC") == 0);
 
     // Test de retournerRail
-    strcpy(rail.recto, "TESTCASE"); // Changement manuel du recto
+    strcpy(rail.recto, "TESTCASE");
     rail.tailleRail = TAILLE_RAIL - 1;
     retournerRailVerso(&rail);
-    assert(strcmp(rail.verso, "ESACTSET") == 0); // Verso doit être "ESACTSET"
+    assert(strcmp(rail.verso, "ESACTSET") == 0);
 
-    // Test de inserer_mots : Ajout d'un mot sans parenthèses dans le verso
+
     strcpy(input, "V\0");
     inserer_mots(&rail, "(SET)EREE", "EREE\0", input, expulse);
     assert(strcmp(rail.verso, "TSETEREE") == 0);
-    assert(strcmp(expulse, "ESAC\0") == 0); // Les lettres "TEST" ont été expulsées
+    assert(strcmp(expulse, "ESAC\0") == 0);
 
-    // Test de inserer_mots : Ajout d'un mot avec parenthèses dans le recto
+
     strcpy(input, "R\0");
     char* motHorsParanthese="CR\0";
     inserer_mots(&rail, "CR(EER)",motHorsParanthese, input, expulse);
     assert(strcmp(rail.recto, "CREERETE") == 0);
-    assert(strcmp(expulse, "ST\0") == 0); // Les lettres "TEST" ont été expulsées
+    assert(strcmp(expulse, "ST\0") == 0);
 }
