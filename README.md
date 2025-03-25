@@ -2,3 +2,6 @@ Bonjour, vous pouvez retrouver ici mon deuxième projet en langage C. Pour ce pr
 Les fichiers sont organisés de manière logique avec une documentation rigoureuse qui permet une meilleure compréhension du code par tous. 
 
 PS : Ce projet a été réalisé dans le cadre de ma première année en BUT Informatique à l'IUT de Paris Rives De Seine. 
+
+IDRI Selyan 
+DE OLIVEIRA Antony 
