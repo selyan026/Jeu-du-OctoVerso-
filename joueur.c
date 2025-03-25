@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <string.h>
 
-void remplirJoueur(Joueur* joueur,Pioche* p, const int id) {
+void remplirJoueur(Joueur* joueur,Pioche* p, const int id)  {
     initialiserVecteur(&joueur->main,LETTREJOUEUR);
     joueur->tailleMain=0;
     joueur->idJoueur=id;

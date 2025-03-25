@@ -1,6 +1,6 @@
 #include "partie.h"
 #include <assert.h>
-void initialiserPartie(Partie* p){
+void initialiserPartie(Partie* p) {
     initPioche(&p->pioche);
     initJoueurs(p,&p->pioche);
     p->rail.tailleRail=0;

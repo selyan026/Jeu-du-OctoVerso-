@@ -5,4 +5,4 @@
 #ifndef ITEMVECTEUR_H
 #define ITEMVECTEUR_H
 typedef char ItemV;
-#endif //ITEMVECTEUR_H
+#endif  //ITEMVECTEUR_H

@@ -23,7 +23,7 @@ typedef struct {
  *
  * @pre 'capaciteInitiale' doit être strictement supérieur à 0.
  */
-void initialiserStockage(Stockage *t, size_t capaciteInitiale);
+void initialiserStockage(Stockage *t, size_t capaciteInitiale) ;
 
 /**
  * @brief Ajoute un mot à une structure de stockage dynamique qui sert d'historique.

@@ -4,7 +4,7 @@
 
 #include <assert.h>
 
-void initialiserStockage(Stockage *t, size_t capaciteInitiale) {
+void initialiserStockage(Stockage *t, size_t capaciteInitiale){
     assert(capaciteInitiale > 0);
     t->capacite = capaciteInitiale;
     t->taille = 0;

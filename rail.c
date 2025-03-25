@@ -2,7 +2,7 @@
 #include <assert.h>
 
 
-void initRail(Rail* r,const char* mot1,const char* mot2) {
+void initRail(Rail* r,const char* mot1,const char* mot2){
     r->tailleRail=0;
     if (strcmp(mot1,mot2)<0) {
         strcpy(r->recto, mot1);

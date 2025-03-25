@@ -11,7 +11,7 @@ enum {
 /* *
 * Représente une pioche (i.e les chevalets qui la composent ainsi que leur nombre).
 */
-typedef struct{
+typedef struct {
     Vecteur chevalet;
     int nbPioche;
 }Pioche;

@@ -2,7 +2,7 @@
 #define DICTONNAIRE_H
 
 /**
- * @brief Permet d'ouvrir le dictionnaire et de vérifier si un mot est contenu dans le dictionnaire
+ * @brief Permet d'ouvrir  le dictionnaire et de vérifier si un mot est contenu dans le dictionnaire
  *
  * @param mot [in] Le mot à rechercher dans le fichier (chaîne de caractères).
  *            Ce paramètre est une entrée et ne sera pas modifié.

@@ -6,7 +6,7 @@
 #include "stdio.h"
 #include "string.h"
 
-enum{TAILLE_RAIL=9};
+enum {TAILLE_RAIL=9};
 
 /* *
 * Représente un rail (i.e la chaine de caractère qui la compose, sa taille qui est fixe).

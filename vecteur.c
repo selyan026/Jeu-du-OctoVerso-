@@ -11,7 +11,7 @@ int initialiserVecteur(Vecteur* v, int capacite) {
     return v->donnees != NULL;
 }
 
-int taille(const Vecteur* v) {
+int taille(const Vecteur* v){
     return v->taille;
 }
 

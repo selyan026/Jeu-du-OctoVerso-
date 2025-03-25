@@ -1,5 +1,5 @@
 #include "partie.h"
 
-int main(){
+int main() {
     jouerUnePartie();
 }

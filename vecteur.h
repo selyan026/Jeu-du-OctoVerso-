@@ -5,7 +5,7 @@
 
 enum { FACTEUR = 2 };
 
-typedef struct {
+typedef struct{
 	int taille;
 	int capacite;
 	ItemV* donnees;

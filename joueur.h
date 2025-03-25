@@ -9,7 +9,7 @@
 enum{J1=0,J2=1};
 
 /* *
-* Représente un joueur (i.e son identifiant, sa main, le nombre de chevalets qu'il lui reste).
+*  Représente un joueur (i.e son identifiant, sa main, le nombre de chevalets qu'il lui reste).
 */
 typedef struct{
     int idJoueur;

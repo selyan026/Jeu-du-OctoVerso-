@@ -6,7 +6,7 @@
 
 
 
-void remplirChevalet(Pioche* p) {
+void remplirChevalet(Pioche* p){
     initialiserVecteur(&p->chevalet,LETTRETOTAL);
     p->nbPioche = 0;
     char lettres[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',

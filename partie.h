@@ -11,7 +11,13 @@
 #include <string.h>
 #include <stdio.h>
 
-enum {NBJOUEURS=2,MAX_MOT=5,TAILLE_INPUT=2,TAILLE_MOT=11,TAILLE_MOT_VIDE=8};// Nombre de joueurs qui jouent
+enum {
+    NBJOUEURS=2,// Nombre de joueurs qui jouent
+    MAX_MOT=5,
+    TAILLE_INPUT=2,
+    TAILLE_MOT=11,
+    TAILLE_MOT_VIDE=8
+};
 /* *
 * Représente une partie (i.e ses joueurs, son recto, sa pioche, le joueurActuelle).
 */
